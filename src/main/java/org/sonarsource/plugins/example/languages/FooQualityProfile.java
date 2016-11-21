@@ -19,15 +19,15 @@
  */
 package org.sonarsource.plugins.example.languages;
 
-import org.sonar.api.profiles.ProfileDefinition;
-import org.sonar.api.profiles.RulesProfile;
-import org.sonar.api.rules.Rule;
-import org.sonar.api.utils.ValidationMessages;
-
 import static org.sonar.api.rules.RulePriority.BLOCKER;
 import static org.sonar.api.rules.RulePriority.CRITICAL;
 import static org.sonar.api.rules.RulePriority.MAJOR;
 import static org.sonarsource.plugins.example.rules.FooLintRulesDefinition.REPO_KEY;
+
+import org.sonar.api.profiles.ProfileDefinition;
+import org.sonar.api.profiles.RulesProfile;
+import org.sonar.api.rules.Rule;
+import org.sonar.api.utils.ValidationMessages;
 
 /**
  * Default Quality profile for the projects having files of language "foo"

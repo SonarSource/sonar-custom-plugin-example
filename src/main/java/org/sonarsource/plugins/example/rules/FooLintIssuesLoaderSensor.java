@@ -3,7 +3,9 @@ package org.sonarsource.plugins.example.rules;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
+
 import javax.xml.stream.XMLStreamException;
+
 import org.apache.commons.lang.StringUtils;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.fs.InputFile;
