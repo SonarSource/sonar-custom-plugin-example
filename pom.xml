@@ -8,7 +8,7 @@
   <version>0.1-SNAPSHOT</version>
 
   <name>Example Plugin for SonarQube</name>
-  <description>Example of plugin for SonarQube</description>
+  <description>Example of Plugin for SonarQube: Foo Language, FooLint, Custom Metrics and MeasureComputers</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

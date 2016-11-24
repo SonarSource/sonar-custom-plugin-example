@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 import org.sonar.api.config.Settings;
 import org.sonar.api.resources.AbstractLanguage;
+import org.sonarsource.plugins.example.settings.FooLanguageProperties;
 
 /**
  * This class defines the fictive Foo language.
@@ -14,8 +15,6 @@ public final class FooLanguage extends AbstractLanguage {
 
   public static final String NAME = "Foo";
   public static final String KEY = "foo";
-  public static final String FILE_SUFFIXES_PROPERTY_KEY = "sonar.foo.file.suffixes";
-  public static final String DEFAULT_FILE_SUFFIXES = "foo";
 
   private final Settings settings;
 
@@ -26,9 +25,9 @@ public final class FooLanguage extends AbstractLanguage {
 
   @Override
   public String[] getFileSuffixes() {
-    String[] suffixes = filterEmptyStrings(settings.getStringArray(FILE_SUFFIXES_PROPERTY_KEY));
+    String[] suffixes = filterEmptyStrings(settings.getStringArray(FooLanguageProperties.FILE_SUFFIXES_KEY));
     if (suffixes.length == 0) {
-      suffixes = StringUtils.split(DEFAULT_FILE_SUFFIXES, ",");
+      suffixes = StringUtils.split(FooLanguageProperties.FILE_SUFFIXES_DEFAULT_VALUE, ",");
     }
     return suffixes;
   }

@@ -1,6 +1,9 @@
 package org.sonarsource.plugins.example;
 
+import static java.util.Arrays.asList;
+
 import org.sonar.api.Plugin;
+import org.sonar.api.config.PropertyDefinition;
 import org.sonarsource.plugins.example.hooks.DisplayIssuesInScanner;
 import org.sonarsource.plugins.example.hooks.DisplayQualityGateStatus;
 import org.sonarsource.plugins.example.languages.FooLanguage;
@@ -13,7 +16,8 @@ import org.sonarsource.plugins.example.rules.CreateIssuesOnJavaFilesSensor;
 import org.sonarsource.plugins.example.rules.FooLintIssuesLoaderSensor;
 import org.sonarsource.plugins.example.rules.FooLintRulesDefinition;
 import org.sonarsource.plugins.example.rules.JavaRulesDefinition;
-import org.sonarsource.plugins.example.settings.ExampleProperties;
+import org.sonarsource.plugins.example.settings.FooLanguageProperties;
+import org.sonarsource.plugins.example.settings.HelloWorldProperties;
 import org.sonarsource.plugins.example.settings.SayHelloFromScanner;
 import org.sonarsource.plugins.example.web.ExampleFooter;
 import org.sonarsource.plugins.example.web.ExampleWidget;
@@ -31,6 +35,7 @@ public class ExamplePlugin implements Plugin {
 
     // tutorial on languages
     context.addExtensions(FooLanguage.class, FooQualityProfile.class);
+    context.addExtension(FooLanguageProperties.getProperties());
 
     // tutorial on measures
     context
@@ -42,10 +47,18 @@ public class ExamplePlugin implements Plugin {
 
     // tutorial on settings
     context
-      .addExtensions(ExampleProperties.definitions())
+      .addExtensions(HelloWorldProperties.getProperties())
       .addExtension(SayHelloFromScanner.class);
 
     // tutorial on web extensions
     context.addExtensions(ExampleFooter.class, ExampleWidget.class);
+
+    context.addExtensions(asList(
+      PropertyDefinition.builder("sonar.foo.file.suffixes")
+        .name("Suffixes Morgan")
+        .description("Suffixes Morgan")
+        .category("Alex")
+        .defaultValue("")
+        .build()));
   }
 }

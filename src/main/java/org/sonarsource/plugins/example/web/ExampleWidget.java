@@ -15,19 +15,15 @@ import org.sonar.api.web.WidgetPropertyType;
 @WidgetProperties({
   @WidgetProperty(key = "param1",
     description = "This is a mandatory parameter",
-    optional = false
-  ),
+    optional = false),
   @WidgetProperty(key = "max",
     description = "max threshold",
     type = WidgetPropertyType.INTEGER,
-    defaultValue = "80"
-  ),
+    defaultValue = "80"),
   @WidgetProperty(key = "param2",
-    description = "This is an optional parameter"
-  ),
+    description = "This is an optional parameter"),
   @WidgetProperty(key = "floatprop",
-    description = "test description"
-  )
+    description = "test description")
 })
 public class ExampleWidget extends AbstractRubyTemplate implements RubyRailsWidget {
 
@@ -45,4 +41,5 @@ public class ExampleWidget extends AbstractRubyTemplate implements RubyRailsWidg
   protected String getTemplatePath() {
     return "/example/example_widget.html.erb";
   }
+
 }
