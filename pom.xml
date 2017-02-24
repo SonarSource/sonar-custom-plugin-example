@@ -5,14 +5,14 @@
   <groupId>org.sonarsource.plugins.example</groupId>
   <artifactId>sonar-example-plugin</artifactId>
   <packaging>sonar-plugin</packaging>
-  <version>0.1-SNAPSHOT</version>
+  <version>6.x-SNAPSHOT</version>
 
   <name>Example Plugin for SonarQube</name>
   <description>Example of Plugin for SonarQube: Foo Language, FooLint, Custom Metrics and MeasureComputers</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <sonar.apiVersion>5.6</sonar.apiVersion>
+    <sonar.apiVersion>6.3-RC3</sonar.apiVersion>
     <jdk.min.version>1.8</jdk.min.version>
   </properties>
 
@@ -54,6 +54,7 @@
         <version>1.16</version>
         <extensions>true</extensions>
         <configuration>
+          <pluginKey>example</pluginKey>
           <pluginClass>org.sonarsource.plugins.example.ExamplePlugin</pluginClass>
         </configuration>
       </plugin>

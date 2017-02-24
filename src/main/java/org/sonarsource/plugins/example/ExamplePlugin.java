@@ -38,8 +38,7 @@ import org.sonarsource.plugins.example.rules.JavaRulesDefinition;
 import org.sonarsource.plugins.example.settings.FooLanguageProperties;
 import org.sonarsource.plugins.example.settings.HelloWorldProperties;
 import org.sonarsource.plugins.example.settings.SayHelloFromScanner;
-import org.sonarsource.plugins.example.web.ExampleFooter;
-import org.sonarsource.plugins.example.web.ExampleWidget;
+import org.sonarsource.plugins.example.web.MyPluginPageDefinition;
 
 /**
  * This class is the entry point for all extensions. It is referenced in pom.xml.
@@ -70,7 +69,7 @@ public class ExamplePlugin implements Plugin {
       .addExtension(SayHelloFromScanner.class);
 
     // tutorial on web extensions
-    context.addExtensions(ExampleFooter.class, ExampleWidget.class);
+    context.addExtension(MyPluginPageDefinition.class);
 
     context.addExtensions(asList(
       PropertyDefinition.builder("sonar.foo.file.suffixes")
