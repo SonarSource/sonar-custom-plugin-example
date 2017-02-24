@@ -8,8 +8,8 @@
 		<severity>BLOCKER</severity>
 		<cardinality>SINGLE</cardinality>
 		<status>READY</status>
+		<type>BUG</type>
 		<tag>example</tag>
-		<tag>bug</tag>
 		<remediationFunction>CONSTANT_ISSUE</remediationFunction>
         <remediationFunctionBaseEffort>2min</remediationFunctionBaseEffort>
 	</rule>
@@ -22,6 +22,7 @@
 		<severity>MAJOR</severity>
 		<cardinality>SINGLE</cardinality>
 		<status>BETA</status>
+		<type>CODE_SMELL</type>
 		<tag>example</tag>
 		<tag>convention</tag>
         <remediationFunction>LINEAR</remediationFunction>
@@ -36,6 +37,7 @@
 		<severity>CRITICAL</severity>
 		<cardinality>SINGLE</cardinality>
 		<status>DEPRECATED</status>
+		<type>VULNERABILITY</type>
 		<tag>example</tag>
 	    <remediationFunction>LINEAR_OFFSET</remediationFunction>
 	    <remediationFunctionGapMultiplier>10min</remediationFunctionGapMultiplier>

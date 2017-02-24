@@ -74,9 +74,9 @@ public class ExamplePlugin implements Plugin {
 
     context.addExtensions(asList(
       PropertyDefinition.builder("sonar.foo.file.suffixes")
-        .name("Suffixes Morgan")
-        .description("Suffixes Morgan")
-        .category("Alex")
+        .name("Suffixes FooLint")
+        .description("Suffixes supported by FooLint")
+        .category("FooLint")
         .defaultValue("")
         .build()));
   }
