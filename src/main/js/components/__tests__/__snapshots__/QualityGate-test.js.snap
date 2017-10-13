@@ -1,0 +1,20 @@
+exports[`test QualityGate-KO 1`] = `
+<span
+  className="level level-KO custom-abc">
+  Failed
+</span>
+`;
+
+exports[`test QualityGate-OK 1`] = `
+<span
+  className="level level-OK">
+  Passed
+</span>
+`;
+
+exports[`test QualityGate-WARNING 1`] = `
+<span
+  className="level level-WARN">
+  Warning
+</span>
+`;
