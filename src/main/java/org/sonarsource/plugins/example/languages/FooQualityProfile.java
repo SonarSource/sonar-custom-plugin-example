@@ -19,27 +19,28 @@
  */
 package org.sonarsource.plugins.example.languages;
 
-import static org.sonar.api.rules.RulePriority.BLOCKER;
-import static org.sonar.api.rules.RulePriority.CRITICAL;
-import static org.sonar.api.rules.RulePriority.MAJOR;
+import org.sonar.api.server.profile.BuiltInQualityProfilesDefinition;
+
 import static org.sonarsource.plugins.example.rules.FooLintRulesDefinition.REPO_KEY;
 
-import org.sonar.api.profiles.ProfileDefinition;
-import org.sonar.api.profiles.RulesProfile;
-import org.sonar.api.rules.Rule;
-import org.sonar.api.utils.ValidationMessages;
-
 /**
- * Default Quality profile for the projects having files of language "foo"
+ * Default, BuiltIn Quality Profile for the projects having files of the language "foo"
  */
-public final class FooQualityProfile extends ProfileDefinition {
+public final class FooQualityProfile implements BuiltInQualityProfilesDefinition {
 
   @Override
-  public RulesProfile createProfile(ValidationMessages validation) {
-    RulesProfile profile = RulesProfile.create("FooLint Rules", FooLanguage.KEY);
-    profile.activateRule(Rule.create(REPO_KEY, "ExampleRule1"), BLOCKER);
-    profile.activateRule(Rule.create(REPO_KEY, "ExampleRule2"), MAJOR);
-    profile.activateRule(Rule.create(REPO_KEY, "ExampleRule3"), CRITICAL);
-    return profile;
+  public void define(Context context) {
+    NewBuiltInQualityProfile profile = context.createBuiltInQualityProfile("FooLint Rules", FooLanguage.KEY);
+    profile.setDefault(true);
+
+    NewBuiltInActiveRule rule1 = profile.activateRule(REPO_KEY, "ExampleRule1");
+    rule1.overrideSeverity("BLOCKER");
+    NewBuiltInActiveRule rule2 = profile.activateRule(REPO_KEY, "ExampleRule2");
+    rule2.overrideSeverity("MAJOR");
+    NewBuiltInActiveRule rule3 = profile.activateRule(REPO_KEY, "ExampleRule3");
+    rule3.overrideSeverity("CRITICAL");
+
+    profile.done();
   }
+
 }
