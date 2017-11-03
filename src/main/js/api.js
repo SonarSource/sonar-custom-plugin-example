@@ -23,6 +23,11 @@ export function findIssuesStatistics(project) {
   });
 };
 
+export function findProjects(project) {
+  return getJSON('/api/projects/search').then(function (response) {
+     return response.components.length;
+  });
+};
 
 export function findVersionsAndMeasures(project) {
 
@@ -40,7 +45,7 @@ return getJSON('/api/project_analyses/search', {
       ps: 1000
     }).then(function (responseMetrics) {
       var data = [];
-      var numberOfVersions=0
+      var numberOfVersions=0;
 
       for (let i = 0; i < numberOfAnalyses; i++) {
         let analysis = responseAnalyses.analyses[i];

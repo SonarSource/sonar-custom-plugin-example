@@ -8,13 +8,19 @@ import {translate} from '../common/l10n.js'
 import {findQualityProfilesStatistics} from '../api.js'
 import {findQualityQatesStatistics} from '../api.js'
 import {findIssuesStatistics} from '../api.js'
+import {findProjects} from '../api.js'
+import {findUsers} from '../api.js'
+import {findGroups} from '../api.js'
 
 export default class InstanceStatisticsApp extends React.PureComponent {
 
   state = {
     numberOfQualityProfiles: '',
     numberOfQualityQates: '',
-    numberOfIssues: ''
+    numberOfIssues: '',
+    numberOfProjects: '',
+    numberOfUsers: '',
+    numberOfGroups: ''
   };
 
   componentDidMount() {
@@ -39,6 +45,13 @@ export default class InstanceStatisticsApp extends React.PureComponent {
             });
         }
     );
+    findProjects().then(
+        (valuesReturnedByAPI) => {
+            this.setState({
+                numberOfProjects: valuesReturnedByAPI
+            });
+        }
+    );
   }
 
   render() {
@@ -57,6 +70,10 @@ export default class InstanceStatisticsApp extends React.PureComponent {
           <tr>
             <td className="code-name-cell"># Issues</td>
             <td className="thin nowrap text-right">{this.state.numberOfIssues}</td>
+          </tr>
+          <tr>
+            <td className="code-name-cell"># Projects</td>
+            <td className="thin nowrap text-right">{this.state.numberOfProjects}</td>
           </tr>
           </tbody>
         </table>

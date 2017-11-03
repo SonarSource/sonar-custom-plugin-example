@@ -3,6 +3,8 @@ window.registerExtension('example/custom_page_4_project', function (options) {
   // let's create a flag telling if the page is still displayed
   var isDisplayed = true;
 
+  console.log(options);
+
   // then do a Web API call to the /api/issues/search to get the number of issues
   // we pass `resolved: false` to request only unresolved issues
   // and `componentKeys: options.component.key` to request issues of the given project
