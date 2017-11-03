@@ -21,9 +21,8 @@ package org.sonarsource.plugins.example.languages;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.commons.lang.StringUtils;
-import org.sonar.api.config.Settings;
+import org.sonar.api.config.Configuration;
 import org.sonar.api.resources.AbstractLanguage;
 import org.sonarsource.plugins.example.settings.FooLanguageProperties;
 
@@ -35,16 +34,16 @@ public final class FooLanguage extends AbstractLanguage {
   public static final String NAME = "Foo";
   public static final String KEY = "foo";
 
-  private final Settings settings;
+  private final Configuration config;
 
-  public FooLanguage(Settings settings) {
+  public FooLanguage(Configuration config) {
     super(KEY, NAME);
-    this.settings = settings;
+    this.config = config;
   }
 
   @Override
   public String[] getFileSuffixes() {
-    String[] suffixes = filterEmptyStrings(settings.getStringArray(FooLanguageProperties.FILE_SUFFIXES_KEY));
+    String[] suffixes = filterEmptyStrings(config.getStringArray(FooLanguageProperties.FILE_SUFFIXES_KEY));
     if (suffixes.length == 0) {
       suffixes = StringUtils.split(FooLanguageProperties.FILE_SUFFIXES_DEFAULT_VALUE, ",");
     }

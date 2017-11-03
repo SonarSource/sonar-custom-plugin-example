@@ -22,10 +22,8 @@ package org.sonarsource.plugins.example.rules;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
-
+import java.util.Optional;
 import javax.xml.stream.XMLStreamException;
-
-import org.apache.commons.lang.StringUtils;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.sensor.Sensor;
@@ -33,7 +31,7 @@ import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.SensorDescriptor;
 import org.sonar.api.batch.sensor.issue.NewIssue;
 import org.sonar.api.batch.sensor.issue.NewIssueLocation;
-import org.sonar.api.config.Settings;
+import org.sonar.api.config.Configuration;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
@@ -50,15 +48,15 @@ public class FooLintIssuesLoaderSensor implements Sensor {
 
   protected static final String REPORT_PATH_KEY = "sonar.foolint.reportPath";
 
-  protected final Settings settings;
+  protected final Configuration config;
   protected final FileSystem fileSystem;
   protected SensorContext context;
 
   /**
    * Use of IoC to get Settings, FileSystem, RuleFinder and ResourcePerspectives
    */
-  public FooLintIssuesLoaderSensor(final Settings settings, final FileSystem fileSystem) {
-    this.settings = settings;
+  public FooLintIssuesLoaderSensor(final Configuration config, final FileSystem fileSystem) {
+    this.config = config;
     this.fileSystem = fileSystem;
   }
 
@@ -73,19 +71,18 @@ public class FooLintIssuesLoaderSensor implements Sensor {
   }
 
   protected String getReportPath() {
-    String reportPath = settings.getString(reportPathKey());
-    if (!StringUtils.isEmpty(reportPath)) {
-      return reportPath;
-    } else {
-      return null;
+    Optional<String> o = config.get(reportPathKey());
+    if (o.isPresent()) {
+      return o.get();
     }
+    return null;
   }
 
   @Override
   public void execute(final SensorContext context) {
-    if (!StringUtils.isEmpty(getReportPath())) {
+    String reportPath = getReportPath();
+    if (reportPath != null) {
       this.context = context;
-      String reportPath = getReportPath();
       File analysisResultsFile = new File(reportPath);
       try {
         parseAndSaveResults(analysisResultsFile);
@@ -98,13 +95,13 @@ public class FooLintIssuesLoaderSensor implements Sensor {
   protected void parseAndSaveResults(final File file) throws XMLStreamException {
     LOGGER.info("(mock) Parsing 'FooLint' Analysis Results");
     FooLintAnalysisResultsParser parser = new FooLintAnalysisResultsParser();
-    List<FooLintError> errors = parser.parse(file);
-    for (FooLintError error : errors) {
+    List<ErrorDataFromExternalLinter> errors = parser.parse(file);
+    for (ErrorDataFromExternalLinter error : errors) {
       getResourceAndSaveIssue(error);
     }
   }
 
-  private void getResourceAndSaveIssue(final FooLintError error) {
+  private void getResourceAndSaveIssue(final ErrorDataFromExternalLinter error) {
     LOGGER.debug(error.toString());
 
     InputFile inputFile = fileSystem.inputFile(
@@ -147,26 +144,26 @@ public class FooLintIssuesLoaderSensor implements Sensor {
     return "FooLintIssuesLoaderSensor";
   }
 
-  private class FooLintError {
+  private class ErrorDataFromExternalLinter {
 
-    private final String type;
-    private final String description;
+    private final String externalRuleId;
+    private final String issueMessage;
     private final String filePath;
     private final int line;
 
-    public FooLintError(final String type, final String description, final String filePath, final int line) {
-      this.type = type;
-      this.description = description;
+    public ErrorDataFromExternalLinter(final String externalRuleId, final String issueMessage, final String filePath, final int line) {
+      this.externalRuleId = externalRuleId;
+      this.issueMessage = issueMessage;
       this.filePath = filePath;
       this.line = line;
     }
 
     public String getType() {
-      return type;
+      return externalRuleId;
     }
 
     public String getDescription() {
-      return description;
+      return issueMessage;
     }
 
     public String getFilePath() {
@@ -180,9 +177,9 @@ public class FooLintIssuesLoaderSensor implements Sensor {
     @Override
     public String toString() {
       StringBuilder s = new StringBuilder();
-      s.append(type);
+      s.append(externalRuleId);
       s.append("|");
-      s.append(description);
+      s.append(issueMessage);
       s.append("|");
       s.append(filePath);
       s.append("(");
@@ -194,13 +191,13 @@ public class FooLintIssuesLoaderSensor implements Sensor {
 
   private class FooLintAnalysisResultsParser {
 
-    public List<FooLintError> parse(final File file) throws XMLStreamException {
+    public List<ErrorDataFromExternalLinter> parse(final File file) throws XMLStreamException {
       LOGGER.info("Parsing file {}", file.getAbsolutePath());
 
       // as the goal of this example is not to demonstrate how to parse an xml file we return an hard coded list of FooError
 
-      FooLintError fooError1 = new FooLintError("ExampleRule1", "More precise description of the error", "src/MyClass.foo", 5);
-      FooLintError fooError2 = new FooLintError("ExampleRule2", "More precise description of the error", "src/MyClass.foo", 9);
+      ErrorDataFromExternalLinter fooError1 = new ErrorDataFromExternalLinter("ExampleRule1", "More precise description of the error", "src/MyClass.foo", 5);
+      ErrorDataFromExternalLinter fooError2 = new ErrorDataFromExternalLinter("ExampleRule2", "More precise description of the error", "src/MyClass.foo", 9);
 
       return Arrays.asList(fooError1, fooError2);
     }

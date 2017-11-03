@@ -19,13 +19,12 @@
  */
 package org.sonarsource.plugins.example.measures;
 
-import static java.util.Arrays.asList;
-
 import java.util.List;
-
 import org.sonar.api.measures.CoreMetrics;
 import org.sonar.api.measures.Metric;
 import org.sonar.api.measures.Metrics;
+
+import static java.util.Arrays.asList;
 
 public class ExampleMetrics implements Metrics {
 

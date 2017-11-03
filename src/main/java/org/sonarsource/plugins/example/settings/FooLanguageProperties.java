@@ -19,12 +19,11 @@
  */
 package org.sonarsource.plugins.example.settings;
 
-import static java.util.Arrays.asList;
-
 import java.util.List;
-
 import org.sonar.api.config.PropertyDefinition;
 import org.sonar.api.resources.Qualifiers;
+
+import static java.util.Arrays.asList;
 
 public class FooLanguageProperties {
 

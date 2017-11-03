@@ -19,8 +19,6 @@
  */
 package org.sonarsource.plugins.example;
 
-import static java.util.Arrays.asList;
-
 import org.sonar.api.Plugin;
 import org.sonar.api.config.PropertyDefinition;
 import org.sonarsource.plugins.example.hooks.DisplayIssuesInScanner;
@@ -39,6 +37,8 @@ import org.sonarsource.plugins.example.settings.FooLanguageProperties;
 import org.sonarsource.plugins.example.settings.HelloWorldProperties;
 import org.sonarsource.plugins.example.settings.SayHelloFromScanner;
 import org.sonarsource.plugins.example.web.MyPluginPageDefinition;
+
+import static java.util.Arrays.asList;
 
 /**
  * This class is the entry point for all extensions. It is referenced in pom.xml.

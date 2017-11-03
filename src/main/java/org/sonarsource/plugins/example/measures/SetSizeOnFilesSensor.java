@@ -19,13 +19,13 @@
  */
 package org.sonarsource.plugins.example.measures;
 
-import static org.sonarsource.plugins.example.measures.ExampleMetrics.FILENAME_SIZE;
-
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.sensor.Sensor;
 import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.SensorDescriptor;
+
+import static org.sonarsource.plugins.example.measures.ExampleMetrics.FILENAME_SIZE;
 
 /**
  * Scanner feeds raw measures on files but must not aggregate values to directories and project.
