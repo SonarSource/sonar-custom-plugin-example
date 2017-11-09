@@ -9,8 +9,6 @@ import {findQualityProfilesStatistics} from '../api.js'
 import {findQualityQatesStatistics} from '../api.js'
 import {findIssuesStatistics} from '../api.js'
 import {findProjects} from '../api.js'
-import {findUsers} from '../api.js'
-import {findGroups} from '../api.js'
 
 export default class InstanceStatisticsApp extends React.PureComponent {
 
@@ -18,9 +16,7 @@ export default class InstanceStatisticsApp extends React.PureComponent {
     numberOfQualityProfiles: '',
     numberOfQualityQates: '',
     numberOfIssues: '',
-    numberOfProjects: '',
-    numberOfUsers: '',
-    numberOfGroups: ''
+    numberOfProjects: ''
   };
 
   componentDidMount() {
