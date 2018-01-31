@@ -13,7 +13,7 @@ export default class QualityGate extends React.PureComponent {
       } else if ( this.props.qg_status === 'WARN' ) {
         return ( <span className="level level-WARN">Warning</span> );
       } else {
-        return ( <span className="level level-KO custom-abc">Failed</span> );
+        return ( <span className="level level-ERROR">Failed</span> );
       }
   }
 }
