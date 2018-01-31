@@ -7,7 +7,6 @@ import React from 'react';
 import MeasuresHistory from './MeasuresHistory'
 import {translate} from '../common/l10n.js'
 import {findVersionsAndMeasures} from '../api.js'
-import {stringifyQPDetails} from '../api.js'
 
 export default class VersionsMeasuresHistoryApp extends React.PureComponent {
 
