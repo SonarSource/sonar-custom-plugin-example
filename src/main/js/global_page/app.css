@@ -16,10 +16,8 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-.custom-abc {
-  background-color: pink;
-}
-
-.sanity-check {
-  width: 400px
+.example-global_page {
+  text-align: center;
+  max-width: 400px;
+  padding: 20px;
 }

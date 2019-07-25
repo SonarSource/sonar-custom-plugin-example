@@ -16,10 +16,15 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-.custom-abc {
-  background-color: pink;
-}
+import React from 'react';
+import '../style.css';
+import InstanceStatisticsApp from './components/InstanceStatisticsApp';
 
-.sanity-check {
-  width: 400px
-}
+// This creates a global administration page, which generates a report of the
+// overall number of Quality Profiles, Quality Gates, total number of issues,
+// and total number of projects.
+//
+// You can access it at /admin/extension/example/admin_page
+window.registerExtension('example/admin_page', () => {
+  return <InstanceStatisticsApp />
+});

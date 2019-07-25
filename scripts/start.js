@@ -26,7 +26,7 @@ const DEFAULT_PORT = process.env.PORT || 3000;
 let compiler;
 let handleCompile;
 
-const PROXY_URL = 'http://localhost:9000';
+const PROXY_URL = process.env.PROXY_URL || 'http://localhost:9000';
 
 function setupCompiler(host, port, protocol) {
   // "Compiler" is a low-level interface to Webpack.
