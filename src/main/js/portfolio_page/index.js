@@ -16,10 +16,14 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-.custom-abc {
-  background-color: pink;
-}
+import React from "react";
+import "../style.css";
+import VersionsMeasuresHistoryApp from "./components/VersionsMeasuresHistoryApp";
 
-.sanity-check {
-  width: 400px
-}
+// This creates a page for portfolios, which generates a report for all the
+// projects inside the portfolio.
+//
+//  You can access it at /project/extension/example/portfolio_page?id={PORTFOLIO_ID}&qualifier=VW
+window.registerExtension("example/portfolio_page", options => {
+  return <VersionsMeasuresHistoryApp project={options.component} />;
+});

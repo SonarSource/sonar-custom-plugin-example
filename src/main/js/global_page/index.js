@@ -16,10 +16,23 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-.custom-abc {
-  background-color: pink;
-}
+import * as app from "./app";
+import "./app.css";
 
-.sanity-check {
-  width: 400px
-}
+// This creates a page for portfolios, which generates a report for all the
+// projects inside the portfolio.
+//
+//  You can access it at /extension/example/global_page
+window.registerExtension('example/global_page', function (options) {
+  // options.el contains the DOM node we can use for our app. Call the start
+  // method to initialize the application, and pass it this DOM node.
+  app.start(options.el);
+
+  // Return the shutdown function.
+  return function () {
+    // When the user leaves our page, we have the opportunity to cleanly
+    // shutdown out application. Do whatever is necessary (removing state, event
+    // listeners, etc) in this function.
+    app.stop();
+  };
+});

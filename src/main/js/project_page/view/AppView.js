@@ -16,10 +16,30 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-.custom-abc {
-  background-color: pink;
-}
+(function ({ app, Backbone, $, _ }) {
 
-.sanity-check {
-  width: 400px
-}
+  app.AppView = Backbone.View.extend({
+
+    tpl: _.template(`
+<div class="page page-limited example-project_page">
+  <button class="button button-red" id="example-project_page--button"><%= label %></button>
+</div>`),
+
+    el: '#example-project_page',
+
+    events: {
+      'click': 'handleClick'
+    },
+
+    handleClick: function() {
+      alert("Gotcha");
+    },
+
+    render: function() {
+      this.$el.html(this.tpl({ label: "Click on this" }));
+      return this;
+    }
+
+  });
+  
+})(window);

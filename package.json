@@ -1,10 +1,10 @@
 {
-  "name": "custom-example",
-  "version": "0.0.1",
+  "name": "sonar-custom-plugin-example",
+  "license": "LGPL-3.0",
+  "version": "7.0.0",
   "devDependencies": {
     "autoprefixer": "6.2.2",
     "babel-core": "6.14.0",
-    "babel-jest": "18.0.0",
     "babel-jest": "18.0.0",
     "babel-loader": "6.2.5",
     "babel-preset-react-app": "0.2.1",
@@ -78,5 +78,10 @@
       "<rootDir>/scripts",
       "<rootDir>/conf"
     ]
+  },
+  "dependencies": {
+    "backbone": "^1.4.0",
+    "jquery": "^1.11.0",
+    "underscore": "^1.9.1"
   }
 }
