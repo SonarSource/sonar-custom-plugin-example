@@ -1,24 +1,16 @@
-language: java
+language: node_js
+node_js: "10"
 sudo: false
 install: true
-
-addons:
-  sonarqube: true
-
-env:
-  global:
-    - secure: "ugMGnYfAukzT1GuqhPTT5WeR3dPUtZQ6/QAu8ayq/OCalLGywAbFsTpSoeQfRZ9zj1n0u6tCq7xc+fSstwdn5v8ODhXCo5G7yzXgoPKYf+kJL/PU1gSe2RIMuJSLx5Jz8KVTOOetMJxZ1yRMHCCsAqG+ItSSHsu1nyH3D8ViqD15FXt5SHLyQ+QV8ro+0TA1I/aLaE/UKc+TPd65AJmjVq+EBvzxNT+WWsmepR/SviyBebROnamin9DK8cRvIH7OWYVtf4hB3X5yEv3BiBezUHvHCqvpQ4meZbcnidpLyG4IKT66OvvjXqieJUSTYNMX/eIgYkUqC3jtab6fH/+DKgOTCFP2B/GJsesWw11i97xMBSKt7kuTtdxcuQowqezpw6z3TNDownN1J9FhBRCK1V19LXECHWg+ofy7yXOvjeN9UXXi9PaDVK5ZTVQwgbJfA6diSZ3Z1qteu/bwFSu27Qyw5/JhAnVhzTRZAxnMyA9+AS9YnHrXFg29oxCtdhYVLGz0QyFudmaCbTUzOY3dg/s+4TXa7dP3bP3cka2w3fuqzSnbWKzEhfenDoGfEEIt6Ab3k9MOjRQtRQiIx30IKGQVH6u9vDrXCmaPWlk5aFKwyKAQUhfmJ9PdRNLErQwgU9Ak9nfLnFuwQksNSDmOPcBW9g9DDrIIDsJ1LsH8UN4="
-
-jdk:
-  - oraclejdk8
-
+jdk: oraclejdk11
+dist: trusty
 script:
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.login=$SONAR_TOKEN
+  - mvn clean package
 
 cache:
+  yarn: true
   directories:
-    - '$HOME/.m2/repository'
-    - '$HOME/.sonar/cache'
+    - $HOME/.m2/repository
 
 notifications:
   email: false
