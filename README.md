@@ -76,7 +76,7 @@ The pages are registered in `src/main/java/org/sonarsource/plugins/example/web/M
 
 There are several helper APIs exposed by SonarQube, like functions to make authenticated API requests, or parsing measures data. SonarQube also exposes several React components, in case you want to use React for your own pages.
 
-You can find the full list of exposed helpers [here](https://github.com/SonarSource/sonar-enterprise/blob/branch-7.9/server/sonar-web/src/main/js/app/components/extensions/exposeLibraries.ts).
+You can find the full list of exposed helpers [here](https://github.com/SonarSource/sonarqube/blob/master/server/sonar-web/src/main/js/app/components/extensions/exposeLibraries.ts).
 
 The included pages contain several examples:
 
