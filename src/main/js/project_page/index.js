@@ -37,7 +37,7 @@ window.registerExtension('example/project_page', function (options) {
   options.el.innerHTML = `<div class="page page-limited" id="example-project_page">Loading...</div>`;
 
   // Start the view.
-  var view = new app.AppView();
+  var view = new app.AppView({ branchLike: options.branchLike });
   view.render();
 
   // Return the shutdown function.

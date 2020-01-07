@@ -5,9 +5,9 @@
   <groupId>org.sonarsource.plugins.example</groupId>
   <artifactId>sonar-example-plugin</artifactId>
   <packaging>sonar-plugin</packaging>
-  <version>7.9.0</version>
+  <version>8.1.0</version>
 
-  <name>Example Plugin for SonarQube 7.9.x LTS</name>
+  <name>Example Plugin for SonarQube 8.x</name>
   <description>Example of Plugin for SonarQube: Foo Language, FooLint, Custom Metrics and MeasureComputers</description>
 
   <properties>
