@@ -20,8 +20,21 @@
 
   app.AppView = Backbone.View.extend({
 
+    initialize: function(options) {
+      _.extend(this, _.pick(options, "branchLike"));
+    },
+
     tpl: _.template(`
 <div class="page page-limited example-project_page">
+  <% if (branchLike !== undefined) { %>
+    <div><strong>
+      <% if (branchLike.name !== undefined) { %>
+        You are currently on branch <%= branchLike.name %>
+      <% } else if (branchLike.key !== undefined) { %>
+        You are currently on PR #<%= branchLike.key %>
+      <% } %>
+    </strong></div>
+  <% } %>
   <button class="button button-red" id="example-project_page--button"><%= label %></button>
 </div>`),
 
@@ -36,7 +49,7 @@
     },
 
     render: function() {
-      this.$el.html(this.tpl({ label: "Click on this" }));
+      this.$el.html(this.tpl({ branchLike: this.branchLike, label: "Click on this" }));
       return this;
     }
 
