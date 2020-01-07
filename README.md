@@ -1,7 +1,7 @@
 SonarQube Custom Plugin Example [![Build Status](https://travis-ci.org/SonarSource/sonar-custom-plugin-example.svg?branch=7.x)](https://travis-ci.org/SonarSource/sonar-custom-plugin-example)
 ==========
 
-An example SonarQube plugin compatible with SonarQube 7.9 LTS.
+An example SonarQube plugin compatible with SonarQube 8.x.
 
 Back-end
 --------
