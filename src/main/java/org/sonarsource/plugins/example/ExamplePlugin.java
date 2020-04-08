@@ -21,7 +21,7 @@ package org.sonarsource.plugins.example;
 
 import org.sonar.api.Plugin;
 import org.sonar.api.config.PropertyDefinition;
-import org.sonarsource.plugins.example.hooks.DisplayIssuesInScanner;
+import org.sonarsource.plugins.example.hooks.PostJobInScanner;
 import org.sonarsource.plugins.example.hooks.DisplayQualityGateStatus;
 import org.sonarsource.plugins.example.languages.FooLanguage;
 import org.sonarsource.plugins.example.languages.FooQualityProfile;
@@ -49,7 +49,7 @@ public class ExamplePlugin implements Plugin {
   public void define(Context context) {
     // tutorial on hooks
     // http://docs.sonarqube.org/display/DEV/Adding+Hooks
-    context.addExtensions(DisplayIssuesInScanner.class, DisplayQualityGateStatus.class);
+    context.addExtensions(PostJobInScanner.class, DisplayQualityGateStatus.class);
 
     // tutorial on languages
     context.addExtensions(FooLanguage.class, FooQualityProfile.class);

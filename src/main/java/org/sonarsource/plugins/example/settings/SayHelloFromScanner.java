@@ -33,7 +33,7 @@ public class SayHelloFromScanner implements Sensor {
 
   @Override
   public void execute(SensorContext context) {
-    if (context.settings().getBoolean(HelloWorldProperties.HELLO_KEY)) {
+    if (context.config().getBoolean(HelloWorldProperties.HELLO_KEY).orElse(false)) {
       // print log only if property is set to true
       Loggers.get(getClass()).info("Hello World!");
     }
