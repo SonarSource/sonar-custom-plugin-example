@@ -5,3 +5,8 @@ target/
 node/
 .idea/
 sonar-example-plugin.iml
+
+# Eclipse
+.classpath
+.project
+.settings/
