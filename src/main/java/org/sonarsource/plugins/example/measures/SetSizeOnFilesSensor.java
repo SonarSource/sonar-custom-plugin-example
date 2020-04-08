@@ -46,7 +46,7 @@ public class SetSizeOnFilesSensor implements Sensor {
       context.<Integer>newMeasure()
         .forMetric(FILENAME_SIZE)
         .on(file)
-        .withValue(file.file().getName().length())
+        .withValue(file.filename().length())
         .save();
     }
   }
