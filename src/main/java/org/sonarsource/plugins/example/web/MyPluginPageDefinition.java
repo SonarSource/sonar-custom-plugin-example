@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2009-2019 SonarSource SA
+ * Example Plugin for SonarQube
+ * Copyright (C) 2009-2020 SonarSource SA
  * mailto:info AT sonarsource DOT com
  *
  * This program is free software; you can redistribute it and/or
@@ -18,19 +19,19 @@
  */
 package org.sonarsource.plugins.example.web;
 
+import org.sonar.api.web.page.Context;
 import org.sonar.api.web.page.Page;
 import org.sonar.api.web.page.PageDefinition;
-import org.sonar.api.web.page.Context;
 
-import static org.sonar.api.web.page.Page.Scope.COMPONENT;
-import static org.sonar.api.web.page.Page.Qualifier.VIEW;
 import static org.sonar.api.web.page.Page.Qualifier.SUB_VIEW;
+import static org.sonar.api.web.page.Page.Qualifier.VIEW;
+import static org.sonar.api.web.page.Page.Scope.COMPONENT;
 
 public class MyPluginPageDefinition implements PageDefinition {
 
   @Override
   public void define(Context context) {
-        context
+    context
       .addPage(Page.builder("example/global_page")
         .setName("Global Page using Vanilla JS")
         .build())
