@@ -36,6 +36,7 @@ public class FooLanguageProperties {
 
   public static List<PropertyDefinition> getProperties() {
     return asList(PropertyDefinition.builder(FILE_SUFFIXES_KEY)
+      .multiValues(true)
       .defaultValue(FILE_SUFFIXES_DEFAULT_VALUE)
       .category("Foo")
       .name("File Suffixes")
