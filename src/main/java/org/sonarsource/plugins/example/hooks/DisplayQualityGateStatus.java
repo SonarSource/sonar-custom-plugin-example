@@ -36,4 +36,9 @@ public class DisplayQualityGateStatus implements PostProjectAnalysisTask {
       Loggers.get(getClass()).info("Quality gate is " + gate.getStatus());
     }
   }
+
+  @Override
+  public String getDescription() {
+    return "Display Quality Gate status";
+  }
 }
