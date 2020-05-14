@@ -40,7 +40,7 @@ public class FooLanguageProperties {
       .defaultValue(FILE_SUFFIXES_DEFAULT_VALUE)
       .category("Foo")
       .name("File Suffixes")
-      .description("Comma-separated list of suffixes for files to analyze.")
+      .description("List of suffixes for files to analyze.")
       .onQualifiers(Qualifiers.PROJECT)
       .build());
   }
