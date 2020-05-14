@@ -53,7 +53,7 @@ public class ExamplePlugin implements Plugin {
 
     // tutorial on languages
     context.addExtensions(FooLanguage.class, FooQualityProfile.class);
-    context.addExtension(FooLanguageProperties.getProperties());
+    context.addExtensions(FooLanguageProperties.getProperties());
 
     // tutorial on measures
     context
@@ -70,13 +70,5 @@ public class ExamplePlugin implements Plugin {
 
     // tutorial on web extensions
     context.addExtension(MyPluginPageDefinition.class);
-
-    context.addExtensions(asList(
-      PropertyDefinition.builder("sonar.foo.file.suffixes")
-        .name("Suffixes FooLint")
-        .description("Suffixes supported by FooLint")
-        .category("FooLint")
-        .defaultValue("")
-        .build()));
   }
 }
