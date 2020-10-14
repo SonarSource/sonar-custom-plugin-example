@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2019 SonarSource SA
+ * Copyright (C) 2009-2020 SonarSource SA
  * mailto:info AT sonarsource DOT com
  *
  * This program is free software; you can redistribute it and/or
@@ -35,7 +35,9 @@ export default function MeasuresHistory(props) {
         </div>
       </td>
       <td className="thin nowrap text-right">
-        <div className="code-components-cell"><span>{formatMeasure(props.measure.bugs, "SHORT_INT")}</span></div>
+        <div className="code-components-cell">
+          <span>{formatMeasure(props.measure.bugs, "SHORT_INT")}</span>
+        </div>
       </td>
       <td className="thin nowrap text-right">
         <div className="code-components-cell">
@@ -57,7 +59,9 @@ export default function MeasuresHistory(props) {
         </div>
       </td>
       <td className="thin nowrap text-right">
-        <div className="code-components-cell"><span>{formatMeasure(props.measure.sqale_index, "SHORT_WORK_DUR")}</span></div>
+        <div className="code-components-cell">
+          <span>{formatMeasure(props.measure.sqale_index, "SHORT_WORK_DUR")}</span>
+        </div>
       </td>
       <td className="thin nowrap text-right">
         <div className="code-components-cell">

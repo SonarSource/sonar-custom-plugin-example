@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2019 SonarSource SA
+ * Copyright (C) 2009-2020 SonarSource SA
  * mailto:info AT sonarsource DOT com
  *
  * This program is free software; you can redistribute it and/or
@@ -26,21 +26,25 @@ import MeasuresHistory from "./MeasuresHistory";
 export default class VersionsMeasuresHistoryApp extends React.PureComponent {
   state = {
     loading: true,
-    data: []
+    data: [],
   };
 
   componentDidMount() {
-    findVersionsAndMeasures(this.props.project).then(data => {
+    findVersionsAndMeasures(this.props.project).then((data) => {
       this.setState({
         loading: false,
-        data
+        data,
       });
     });
   }
 
   render() {
     if (this.state.loading) {
-      return <div className="page page-limited"><DeferredSpinner /></div>;
+      return (
+        <div className="page page-limited">
+          <DeferredSpinner />
+        </div>
+      );
     }
 
     return (

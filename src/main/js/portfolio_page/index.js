@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2019 SonarSource SA
+ * Copyright (C) 2009-2020 SonarSource SA
  * mailto:info AT sonarsource DOT com
  *
  * This program is free software; you can redistribute it and/or
@@ -24,6 +24,6 @@ import VersionsMeasuresHistoryApp from "./components/VersionsMeasuresHistoryApp"
 // projects inside the portfolio.
 //
 //  You can access it at /project/extension/example/portfolio_page?id={PORTFOLIO_ID}&qualifier=VW
-window.registerExtension("example/portfolio_page", options => {
+window.registerExtension("example/portfolio_page", (options) => {
   return <VersionsMeasuresHistoryApp project={options.component} />;
 });

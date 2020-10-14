@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2019 SonarSource SA
+ * Copyright (C) 2009-2020 SonarSource SA
  * mailto:info AT sonarsource DOT com
  *
  * This program is free software; you can redistribute it and/or
@@ -21,25 +21,25 @@
 import { getJSON } from "sonar-request";
 
 export function findQualityProfilesStatistics(project) {
-  return getJSON("/api/qualityprofiles/search").then(function(response) {
+  return getJSON("/api/qualityprofiles/search").then(function (response) {
     return response.profiles.length;
   });
 }
 
 export function findQualityQatesStatistics(project) {
-  return getJSON("/api/qualitygates/list").then(function(response) {
+  return getJSON("/api/qualitygates/list").then(function (response) {
     return response.qualitygates.length;
   });
 }
 
 export function findIssuesStatistics(project) {
-  return getJSON("/api/issues/search").then(function(response) {
+  return getJSON("/api/issues/search").then(function (response) {
     return response.total;
   });
 }
 
 export function findProjects(project) {
-  return getJSON("/api/projects/search").then(function(response) {
+  return getJSON("/api/projects/search").then(function (response) {
     return response.components.length;
   });
 }
@@ -48,15 +48,16 @@ export function findVersionsAndMeasures(project) {
   return getJSON("/api/project_analyses/search", {
     project: project.key,
     p: 1,
-    ps: 500
-  }).then(function(responseAnalyses) {
+    ps: 500,
+  }).then(function (responseAnalyses) {
     const numberOfAnalyses = responseAnalyses.analyses.length;
     if (numberOfAnalyses > 0) {
       return getJSON("/api/measures/search_history", {
         component: project.key,
-        metrics: "alert_status,bugs,vulnerabilities,sqale_index,reliability_rating,security_rating,sqale_rating",
-        ps: 50
-      }).then(function(responseMetrics) {
+        metrics:
+          "alert_status,bugs,vulnerabilities,sqale_index,reliability_rating,security_rating,sqale_rating",
+        ps: 50,
+      }).then(function (responseMetrics) {
         var data = [];
         var numberOfVersions = 0;
         for (let i = 0; i < numberOfAnalyses; i++) {
@@ -67,7 +68,7 @@ export function findVersionsAndMeasures(project) {
             sqale_index: "0",
             reliability_rating: "",
             security_rating: "",
-            sqale_rating: ""
+            sqale_rating: "",
           };
           const numberOfMeasuresRetrieved = 7;
 

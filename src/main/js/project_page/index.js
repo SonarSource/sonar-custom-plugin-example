@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2019 SonarSource SA
+ * Copyright (C) 2009-2020 SonarSource SA
  * mailto:info AT sonarsource DOT com
  *
  * This program is free software; you can redistribute it and/or
@@ -18,7 +18,7 @@
  */
 // Necessary for setting up, because of Webpack.
 import Backbone from "backbone";
-import $ from 'jquery';
+import $ from "jquery";
 import _ from "underscore";
 window.$ = $;
 window._ = _;
@@ -31,7 +31,7 @@ require("./view/AppView");
 // This creates a page for any component (project, portfolio, etc).
 //
 //  You can access it at /project/extension/example/project_page?id={COMPONENT_ID}
-window.registerExtension('example/project_page', function (options) {
+window.registerExtension("example/project_page", function (options) {
   // options.el contains the DOM node we can use for our app. Prepare our node
   // so our Backbone View can correctly target it.
   options.el.innerHTML = `<div class="page page-limited" id="example-project_page">Loading...</div>`;
@@ -43,7 +43,7 @@ window.registerExtension('example/project_page', function (options) {
   // Return the shutdown function.
   return function () {
     // When the user leaves our page, we have the opportunity to cleanly
-    // shutdown out application. Let's clean up the view by removing it 
+    // shutdown out application. Let's clean up the view by removing it
     // completely.
     view.remove();
   };

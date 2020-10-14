@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2019 SonarSource SA
+ * Copyright (C) 2009-2020 SonarSource SA
  * mailto:info AT sonarsource DOT com
  *
  * This program is free software; you can redistribute it and/or
@@ -16,15 +16,15 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-import React from 'react';
-import '../style.css';
-import InstanceStatisticsApp from './components/InstanceStatisticsApp';
+import React from "react";
+import "../style.css";
+import InstanceStatisticsApp from "./components/InstanceStatisticsApp";
 
 // This creates a global administration page, which generates a report of the
 // overall number of Quality Profiles, Quality Gates, total number of issues,
 // and total number of projects.
 //
 // You can access it at /admin/extension/example/admin_page
-window.registerExtension('example/admin_page', () => {
-  return <InstanceStatisticsApp />
+window.registerExtension("example/admin_page", () => {
+  return <InstanceStatisticsApp />;
 });

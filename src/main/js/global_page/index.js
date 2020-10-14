@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2019 SonarSource SA
+ * Copyright (C) 2009-2020 SonarSource SA
  * mailto:info AT sonarsource DOT com
  *
  * This program is free software; you can redistribute it and/or
@@ -23,7 +23,7 @@ import "./app.css";
 // projects inside the portfolio.
 //
 //  You can access it at /extension/example/global_page
-window.registerExtension('example/global_page', function (options) {
+window.registerExtension("example/global_page", function (options) {
   // options.el contains the DOM node we can use for our app. Call the start
   // method to initialize the application, and pass it this DOM node.
   app.start(options.el);

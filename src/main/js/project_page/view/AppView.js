@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2019 SonarSource SA
+ * Copyright (C) 2009-2020 SonarSource SA
  * mailto:info AT sonarsource DOT com
  *
  * This program is free software; you can redistribute it and/or
@@ -17,10 +17,8 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 (function ({ app, Backbone, $, _ }) {
-
   app.AppView = Backbone.View.extend({
-
-    initialize: function(options) {
+    initialize: function (options) {
       _.extend(this, _.pick(options, "branchLike"));
     },
 
@@ -38,21 +36,19 @@
   <button class="button button-red" id="example-project_page--button"><%= label %></button>
 </div>`),
 
-    el: '#example-project_page',
+    el: "#example-project_page",
 
     events: {
-      'click': 'handleClick'
+      click: "handleClick",
     },
 
-    handleClick: function() {
+    handleClick: function () {
       alert("Gotcha");
     },
 
-    render: function() {
+    render: function () {
       this.$el.html(this.tpl({ branchLike: this.branchLike, label: "Click on this" }));
       return this;
-    }
-
+    },
   });
-  
 })(window);

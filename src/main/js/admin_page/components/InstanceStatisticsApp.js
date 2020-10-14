@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2019 SonarSource SA
+ * Copyright (C) 2009-2020 SonarSource SA
  * mailto:info AT sonarsource DOT com
  *
  * This program is free software; you can redistribute it and/or
@@ -20,7 +20,12 @@ import React from "react";
 // SonarComponents (referenced as sonar-components here, see the Webpack config)
 // exposes React components exposed by SonarQube.
 import { DeferredSpinner } from "sonar-components";
-import { findIssuesStatistics, findProjects, findQualityProfilesStatistics, findQualityQatesStatistics } from "../../common/api";
+import {
+  findIssuesStatistics,
+  findProjects,
+  findQualityProfilesStatistics,
+  findQualityQatesStatistics,
+} from "../../common/api";
 
 export default class InstanceStatisticsApp extends React.PureComponent {
   state = {
@@ -28,7 +33,7 @@ export default class InstanceStatisticsApp extends React.PureComponent {
     numberOfQualityProfiles: "",
     numberOfQualityGates: "",
     numberOfIssues: "",
-    numberOfProjects: ""
+    numberOfProjects: "",
   };
 
   componentDidMount() {
@@ -36,21 +41,25 @@ export default class InstanceStatisticsApp extends React.PureComponent {
       findQualityProfilesStatistics(),
       findQualityQatesStatistics(),
       findIssuesStatistics(),
-      findProjects()
+      findProjects(),
     ]).then(([numberOfQualityProfiles, numberOfQualityGates, numberOfIssues, numberOfProjects]) => {
       this.setState({
         loading: false,
         numberOfQualityProfiles,
         numberOfQualityGates,
         numberOfIssues,
-        numberOfProjects
+        numberOfProjects,
       });
     });
   }
 
   render() {
     if (this.state.loading) {
-      return <div className="page page-limited"><DeferredSpinner /></div>;
+      return (
+        <div className="page page-limited">
+          <DeferredSpinner />
+        </div>
+      );
     }
 
     return (
