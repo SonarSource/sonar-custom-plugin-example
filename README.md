@@ -66,7 +66,7 @@ It is recommended you check out the sources in `src/main/js/` directly. The code
 
 The pages are registered in `src/main/java/org/sonarsource/plugins/example/web/MyPluginPageDefinition.java`, and their respective front-end source code is located in `src/main/js/`. These examples use different stacks to demonstrate different possibilities:
 
-* React JS examples (recommended, SonarQube uses React v16.8):
+* React JS examples (recommended, SonarQube uses React 16):
   * `src/main/js/portfolio_page/`
   * `src/main/js/admin_page/`
 * Backbone JS example: `src/main/js/project_page/`
@@ -74,7 +74,7 @@ The pages are registered in `src/main/java/org/sonarsource/plugins/example/web/M
 
 #### Helper APIs exposed by SonarQube
 
-There are several helper APIs exposed by SonarQube, like functions to make authenticated API requests, or parsing measures data. SonarQube also exposes several React components, in case you want to use React for your own pages.
+There are several helper APIs exposed by SonarQube, like functions to make authenticated API requests.
 
 You can find the full list of exposed helpers [here](https://github.com/SonarSource/sonarqube/blob/master/server/sonar-web/src/main/js/app/components/extensions/exposeLibraries.ts).
 
@@ -82,9 +82,13 @@ The included pages contain several examples:
 
 * **API calls (`window.SonarRequest`)**  
   Check `src/main/js/common/api.js` for some examples.
-* **Measure helpers (`window.SonarMeasures`)**  
-  Check `src/main/js/portfolio_page/components/MeasuresHistory.js` for some examples.
-* **React Components (`window.SonarComponents`)**  
-  Check `src/main/js/portfolio_page/components/MeasuresHistory.js`, `src/main/js/portfolio_page/components/VersionsMeasuresHistoryApp.js` and `src/main/js/admin_page/components/InstanceStatisticsApp.js` for some examples.
+
 * **Localization (`window.t()` and `window.tp()`)**  
   Localizable UI strings are defined in `src/main/resources/org/sonar/l10n/example/`. They are loaded at startup time, and can used by the global `t()` and `tp()` functions. See `src/main/js/admin_page/components/InstanceStatisticsApp.js` and `src/main/js/portfolio_page/components/VersionsMeasuresHistoryApp.js` for some examples. 
+
+**Deprecation notice**
+
+Starting with SonarQube 8.7, the following APIs are deprecated and won't be maintained anymore. They'll be dropped after the next SonarQube LTS version.
+
+* **Measure helpers (`window.SonarMeasures`)**
+* **React Components (`window.SonarComponents`)**
