@@ -17,9 +17,6 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 import React from "react";
-// SonarComponents (referenced as sonar-components here, see the Webpack config)
-// exposes React components exposed by SonarQube.
-import { DeferredSpinner } from "sonar-components";
 import { findVersionsAndMeasures } from "../../common/api";
 import MeasuresHistory from "./MeasuresHistory";
 
@@ -40,7 +37,11 @@ export default class VersionsMeasuresHistoryApp extends React.PureComponent {
 
   render() {
     if (this.state.loading) {
-      return <div className="page page-limited"><DeferredSpinner /></div>;
+      return (
+        <div className="page page-limited">
+          Loading...
+        </div>
+      );
     }
 
     return (

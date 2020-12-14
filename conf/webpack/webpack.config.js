@@ -51,11 +51,6 @@ module.exports = {
     // See src/main/js/common/api.js for more information on what is exposed 
     // in SonarRequest.
     "sonar-request": "SonarRequest",
-    // TODO: provide an example
-    "sonar-measures": "SonarMeasures",
-    // See src/main/js/portfolio_page/components/MeasuresHistory.js for some
-    // examples using React components from SonarQube.
-    "sonar-components": "SonarComponents"
   },
   module: {
     // Our example uses Babel to transpile our code.
