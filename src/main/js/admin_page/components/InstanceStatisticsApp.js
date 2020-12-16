@@ -68,7 +68,7 @@ export default class InstanceStatisticsApp extends React.PureComponent {
                 {window.tp(
                   "example.admin_page.we_have_x_y",
                   this.state.numberOfQualityProfiles,
-                  "Quality Profiles"
+                  window.t("example.admin_page.quality_profiles")
                 )}
               </td>
             </tr>
@@ -77,7 +77,7 @@ export default class InstanceStatisticsApp extends React.PureComponent {
                 {window.tp(
                   "example.admin_page.we_have_x_y",
                   this.state.numberOfQualityGates,
-                  "Quality Gates"
+                  window.t("example.admin_page.quality_gates")
                 )}
               </td>
             </tr>
@@ -85,7 +85,7 @@ export default class InstanceStatisticsApp extends React.PureComponent {
               <td className="code-name-cell">
                 {window.tp(
                   "example.admin_page.we_have_x_y",
-                  this.state.numberOfIssue,
+                  this.state.numberOfIssues,
                   window.t("example.admin_page.issues")
                 )}
               </td>
@@ -95,7 +95,7 @@ export default class InstanceStatisticsApp extends React.PureComponent {
                 {window.tp(
                   "example.admin_page.we_have_x_y",
                   this.state.numberOfProjects,
-                  "Projects"
+                  window.t("example.admin_page.projects")
                 )}
               </td>
             </tr>
