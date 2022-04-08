@@ -13,7 +13,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <sonar.apiVersion>9.4.0.54424</sonar.apiVersion>
-    <jdk.min.version>8</jdk.min.version>
+    <jdk.min.version>11</jdk.min.version>
     <sonar.sources>src/main/java,src/main/js</sonar.sources>
   </properties>
 
@@ -64,8 +64,7 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
         <configuration>
-          <source>${jdk.min.version}</source>
-          <target>${jdk.min.version}</target>
+          <release>11</release>
         </configuration>
       </plugin>
       <plugin>
