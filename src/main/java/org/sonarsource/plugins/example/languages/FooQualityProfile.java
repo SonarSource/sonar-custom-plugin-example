@@ -20,8 +20,11 @@
 package org.sonarsource.plugins.example.languages;
 
 import org.sonar.api.server.profile.BuiltInQualityProfilesDefinition;
+import org.sonarsource.plugins.example.rules.FlagLine1Rule;
+import org.sonarsource.plugins.example.rules.FlagLine2Rule;
+import org.sonarsource.plugins.example.rules.FlagLine3Rule;
 
-import static org.sonarsource.plugins.example.rules.FooLintRulesDefinition.REPO_KEY;
+import static org.sonarsource.plugins.example.rules.FlagRuleDefinition.REPO_KEY;
 
 /**
  * Default, BuiltIn Quality Profile for the projects having files of the language "foo"
@@ -33,11 +36,13 @@ public final class FooQualityProfile implements BuiltInQualityProfilesDefinition
     NewBuiltInQualityProfile profile = context.createBuiltInQualityProfile("FooLint Rules", FooLanguage.KEY);
     profile.setDefault(true);
 
-    NewBuiltInActiveRule rule1 = profile.activateRule(REPO_KEY, "ExampleRule1");
+    NewBuiltInActiveRule rule1 = profile.activateRule(REPO_KEY, FlagLine1Rule.RULE_KEY);
     rule1.overrideSeverity("BLOCKER");
-    NewBuiltInActiveRule rule2 = profile.activateRule(REPO_KEY, "ExampleRule2");
+
+
+    NewBuiltInActiveRule rule2 = profile.activateRule(REPO_KEY, FlagLine2Rule.RULE_KEY);
     rule2.overrideSeverity("MAJOR");
-    NewBuiltInActiveRule rule3 = profile.activateRule(REPO_KEY, "ExampleRule3");
+    NewBuiltInActiveRule rule3 = profile.activateRule(REPO_KEY, FlagLine3Rule.RULE_KEY);
     rule3.overrideSeverity("CRITICAL");
 
     profile.done();
