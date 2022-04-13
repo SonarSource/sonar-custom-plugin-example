@@ -1,9 +1,9 @@
-language: node_js
-node_js: "10"
+language: java
 sudo: false
 install: true
-jdk: oraclejdk11
-dist: trusty
+jdk:
+  - oraclejdk11
+dist: focal
 script:
   - mvn clean package
 
