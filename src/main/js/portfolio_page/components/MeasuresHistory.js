@@ -23,35 +23,40 @@ export default function MeasuresHistory(props) {
     <tr>
       <td className="thin nowrap text-center">
         <div className="code-components-cell">
-          <span>
-            {props.measure.alert_status || "OK"}
-          </span>
-        </div>
-      </td>
-      <td className="thin nowrap text-right">
-        <div className="code-components-cell"><span>{props.measure.bugs}</span></div>
-      </td>
-      <td className="thin nowrap text-right">
-        <div className="code-components-cell">
-          <span>
-            {formatRating(props.measure.reliability_rating || 1)}
-          </span>
+          <span>{props.measure.lines}</span>
         </div>
       </td>
       <td className="thin nowrap text-right">
         <div className="code-components-cell">
-          <span>{props.measure.vulnerabilities}</span>
+          <span>{props.measure.bugs}</span>
+        </div>
+      </td>
+      <td className="thin nowrap text-right">
+        <div className="code-components-cell">
+          <span>{props.measure.ncloc_language_distribution}</span>
+        </div>
+      </td>
+      <td className="thin nowrap text-right">
+        <div className="code-components-cell">
+          <span>{props.measure.new_vulnerabilities}</span>
+        </div>
+      </td>
+      <td className="thin nowrap text-right">
+        <div className="code-components-cell">
+          <span>{props.measure.new_security_hotspots}</span>
+        </div>
+      </td>
+      <td className="thin nowrap text-right">
+        <div className="code-components-cell">
+          <span>{props.measure.ncloc}</span>
         </div>
       </td>
       <td className="thin nowrap text-right">
         <div className="code-components-cell">
           <span>
-          {formatRating(props.measure.security_rating || 1)}
+          {formatRating(props.measure.new_maintainability_rating || 1)}
           </span>
         </div>
-      </td>
-      <td className="thin nowrap text-right">
-        <div className="code-components-cell"><span>{props.measure.sqale_index}</span></div>
       </td>
       <td className="thin nowrap text-right">
         <div className="code-components-cell">

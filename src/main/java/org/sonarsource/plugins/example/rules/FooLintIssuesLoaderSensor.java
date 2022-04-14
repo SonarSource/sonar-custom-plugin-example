@@ -136,7 +136,7 @@ public class FooLintIssuesLoaderSensor implements Sensor {
   }
 
   private static String getRepositoryKeyForLanguage(String languageKey) {
-    return languageKey.toLowerCase() + "-" + FooLintRulesDefinition.KEY;
+    return languageKey.toLowerCase() + "-" + FlagRuleDefinition.KEY;
   }
 
   @Override

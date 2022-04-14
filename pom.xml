@@ -5,15 +5,15 @@
   <groupId>org.sonarsource.plugins.example</groupId>
   <artifactId>sonar-example-plugin</artifactId>
   <packaging>sonar-plugin</packaging>
-  <version>8.1.0</version>
+  <version>9.0.0</version>
 
-  <name>Example Plugin for SonarQube 8.x</name>
+  <name>Example Plugin for SonarQube 9.x</name>
   <description>Example of Plugin for SonarQube: Foo Language, FooLint, Custom Metrics and MeasureComputers</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <sonar.apiVersion>8.3.1.34397</sonar.apiVersion>
-    <jdk.min.version>1.8</jdk.min.version>
+    <sonar.apiVersion>9.4.0.54424</sonar.apiVersion>
+    <jdk.min.version>11</jdk.min.version>
     <sonar.sources>src/main/java,src/main/js</sonar.sources>
   </properties>
 
@@ -52,7 +52,7 @@
       <plugin>
         <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
         <artifactId>sonar-packaging-maven-plugin</artifactId>
-        <version>1.18.0.372</version>
+        <version>1.21.0.505</version>
         <extensions>true</extensions>
         <configuration>
           <pluginKey>example</pluginKey>
@@ -62,10 +62,9 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
+        <version>3.10.1</version>
         <configuration>
-          <source>${jdk.min.version}</source>
-          <target>${jdk.min.version}</target>
+          <release>11</release>
         </configuration>
       </plugin>
       <plugin>
@@ -93,7 +92,7 @@
               <goal>install-node-and-yarn</goal>
             </goals>
             <configuration>
-              <nodeVersion>v14.15.1</nodeVersion>
+              <nodeVersion>v16.14.0</nodeVersion>
               <yarnVersion>v1.22.5</yarnVersion>
             </configuration>
           </execution>

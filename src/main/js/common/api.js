@@ -54,19 +54,20 @@ export function findVersionsAndMeasures(project) {
     if (numberOfAnalyses > 0) {
       return getJSON("/api/measures/search_history", {
         component: project.key,
-        metrics: "alert_status,bugs,vulnerabilities,sqale_index,reliability_rating,security_rating,sqale_rating",
+        metrics: "lines,bugs,new_vulnerabilities,ncloc,ncloc_language_distribution,new_security_hotspots,new_maintainability_rating,sqale_rating",
         ps: 50
       }).then(function(responseMetrics) {
         var data = [];
         var numberOfVersions = 0;
         for (let i = 0; i < numberOfAnalyses; i++) {
           let result = {
-            alert_status: "",
+            lines: "0",
             bugs: "0",
-            vulnerabilities: "0",
-            sqale_index: "0",
-            reliability_rating: "",
-            security_rating: "",
+            new_vulnerabilities: "0",
+            ncloc: "0",
+            ncloc_language_distribution: "",
+            new_security_hotspots: "0",
+            new_maintainability_rating: "",
             sqale_rating: ""
           };
           const numberOfMeasuresRetrieved = 7;
@@ -78,16 +79,18 @@ export function findVersionsAndMeasures(project) {
               ) {
                 if (responseMetrics.measures[k].metric === "bugs") {
                   result.bugs = responseMetrics.measures[k].history[d].value;
-                } else if (responseMetrics.measures[k].metric === "vulnerabilities") {
-                  result.vulnerabilities = responseMetrics.measures[k].history[d].value;
-                } else if (responseMetrics.measures[k].metric === "sqale_index") {
-                  result.sqale_index = responseMetrics.measures[k].history[d].value;
-                } else if (responseMetrics.measures[k].metric === "alert_status") {
-                  result.alert_status = responseMetrics.measures[k].history[d].value;
-                } else if (responseMetrics.measures[k].metric === "reliability_rating") {
-                  result.reliability_rating = responseMetrics.measures[k].history[d].value;
-                } else if (responseMetrics.measures[k].metric === "security_rating") {
-                  result.security_rating = responseMetrics.measures[k].history[d].value;
+                } else if (responseMetrics.measures[k].metric === "new_vulnerabilities") {
+                  result.new_vulnerabilities = responseMetrics.measures[k].history[d].value;
+                } else if (responseMetrics.measures[k].metric === "ncloc") {
+                  result.ncloc = responseMetrics.measures[k].history[d].value;
+                } else if (responseMetrics.measures[k].metric === "lines") {
+                  result.lines = responseMetrics.measures[k].history[d].value;
+                } else if (responseMetrics.measures[k].metric === "ncloc_language_distribution") {
+                  result.ncloc_language_distribution = responseMetrics.measures[k].history[d].value;
+                } else if (responseMetrics.measures[k].metric === "new_security_hotspots") {
+                  result.new_security_hotspots = responseMetrics.measures[k].history[d].value;
+                } else if (responseMetrics.measures[k].metric === "new_maintainability_rating") {
+                  result.new_maintainability_rating = responseMetrics.measures[k].history[d].value;
                 } else if (responseMetrics.measures[k].metric === "sqale_rating") {
                   result.sqale_rating = responseMetrics.measures[k].history[d].value;
                 }
