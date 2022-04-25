@@ -19,6 +19,7 @@
 
   <dependencies>
     <dependency>
+      <!-- groupId is 'org.sonarsource.api.plugin' starting in version 9.5 -->
       <groupId>org.sonarsource.sonarqube</groupId>
       <artifactId>sonar-plugin-api</artifactId>
       <version>${sonar.apiVersion}</version>
