@@ -12,14 +12,15 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <sonar.apiVersion>9.4.0.54424</sonar.apiVersion>
+    <sonar.apiVersion>9.8.0.203</sonar.apiVersion>
+    <sonar.testingHarnessVersion>9.5.0.56709</sonar.testingHarnessVersion>
     <jdk.min.version>11</jdk.min.version>
     <sonar.sources>src/main/java,src/main/js</sonar.sources>
   </properties>
 
   <dependencies>
     <dependency>
-      <groupId>org.sonarsource.sonarqube</groupId>
+      <groupId>org.sonarsource.api.plugin</groupId>
       <artifactId>sonar-plugin-api</artifactId>
       <version>${sonar.apiVersion}</version>
       <scope>provided</scope>
@@ -36,7 +37,7 @@
     <dependency>
       <groupId>org.sonarsource.sonarqube</groupId>
       <artifactId>sonar-testing-harness</artifactId>
-      <version>${sonar.apiVersion}</version>
+      <version>${sonar.testingHarnessVersion}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -57,6 +58,7 @@
         <configuration>
           <pluginKey>example</pluginKey>
           <pluginClass>org.sonarsource.plugins.example.ExamplePlugin</pluginClass>
+          <sonarQubeMinVersion>9.5</sonarQubeMinVersion>
         </configuration>
       </plugin>
       <plugin>
