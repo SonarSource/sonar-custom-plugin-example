@@ -85,10 +85,3 @@ The included pages contain several examples:
 
 * **Localization (`window.t()` and `window.tp()`)**  
   Localizable UI strings are defined in `src/main/resources/org/sonar/l10n/example/`. They are loaded at startup time, and can used by the global `t()` and `tp()` functions. See `src/main/js/admin_page/components/InstanceStatisticsApp.js` and `src/main/js/portfolio_page/components/VersionsMeasuresHistoryApp.js` for some examples. 
-
-**Deprecation notice**
-
-Starting with SonarQube 8.7, the following APIs are deprecated and won't be maintained anymore. They'll be dropped after the next SonarQube LTS version.
-
-* **Measure helpers (`window.SonarMeasures`)**
-* **React Components (`window.SonarComponents`)**
