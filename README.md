@@ -3,6 +3,8 @@ SonarQube Custom Plugin Example [![Build Status](https://travis-ci.org/SonarSour
 
 An example SonarQube plugin compatible with SonarQube 10.x.
 
+Sonar's [Clean Code solutions](https://www.sonarsource.com/solutions/clean-code/?utm_medium=referral&utm_source=github&utm_campaign=clean-code&utm_content=sonar-custom-plugin-example) help developers deliver high-quality, efficient code standards that benefit the entire team or organization.
+
 Back-end
 --------
 
@@ -37,13 +39,13 @@ This plugin registers 4 extension pages in the SonarQube web app. They demonstra
   ```
   PORT=6060 npm start
   ```
-  You can control to which SonarQube instance you proxy to by setting the `PROXY_URL` environment variable to any valid URL (defaults to `http://localhost:9000`). Example:  
+  You can control to which SonarQube instance you proxy by setting the `PROXY_URL` environment variable to any valid URL (defaults to `http://localhost:9000`). Example:  
   ```
   PROXY_URL=https://sonarqube.example.com npm start
   ```
 * `npm test` to start watching your files for changes, and run tests accordingly.
 * `npm run build` to build your front-end code.  
-  Usually, you will not need to call this; instead, this should be part of your package building process.  
+  Usually, you will not need to call this; instead, this should be part of your package-building process.  
   See Back-end > Building above.
 
 ### Building
@@ -62,7 +64,7 @@ This project uses [Jest](https://jestjs.io/) for testing. Running `npm test` wil
 
 ### How to use these files
 
-It is recommended you check out the sources in `src/main/js/` directly. The code is well commented, and provides real-world examples on how to interact with SonarQube.
+It is recommended you check out the sources in `src/main/js/` directly. The code is well-commented and provides real-world examples of how to interact with SonarQube.
 
 The pages are registered in `src/main/java/org/sonarsource/plugins/example/web/MyPluginPageDefinition.java`, and their respective front-end source code is located in `src/main/js/`. These examples use different stacks to demonstrate different possibilities:
 
@@ -84,4 +86,4 @@ The included pages contain several examples:
   Check `src/main/js/common/api.js` for some examples.
 
 * **Localization (`window.t()` and `window.tp()`)**  
-  Localizable UI strings are defined in `src/main/resources/org/sonar/l10n/example/`. They are loaded at startup time, and can used by the global `t()` and `tp()` functions. See `src/main/js/admin_page/components/InstanceStatisticsApp.js` and `src/main/js/portfolio_page/components/VersionsMeasuresHistoryApp.js` for some examples. 
+  Localizable UI strings are defined in `src/main/resources/org/sonar/l10n/example/`. They are loaded at startup time and can used by the global `t()` and `tp()` functions. See `src/main/js/admin_page/components/InstanceStatisticsApp.js` and `src/main/js/portfolio_page/components/VersionsMeasuresHistoryApp.js` for some examples. 
