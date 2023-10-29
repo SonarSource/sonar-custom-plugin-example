@@ -17,13 +17,13 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package org.sonarsource.plugins.example.measures;
+package org.sonarsource.plugins.bml.measures;
+
+import static org.sonarsource.plugins.bml.measures.ExampleMetrics.FILENAME_SIZE;
+import static org.sonarsource.plugins.bml.measures.ExampleMetrics.FILENAME_SIZE_RATING;
 
 import org.sonar.api.ce.measure.Measure;
 import org.sonar.api.ce.measure.MeasureComputer;
-
-import static org.sonarsource.plugins.example.measures.ExampleMetrics.FILENAME_SIZE;
-import static org.sonarsource.plugins.example.measures.ExampleMetrics.FILENAME_SIZE_RATING;
 
 /**
  * Rating is computed from value of metric {@link ExampleMetrics#FILENAME_SIZE}.

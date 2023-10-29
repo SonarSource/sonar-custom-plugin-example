@@ -17,32 +17,30 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package org.sonarsource.plugins.example.settings;
+package org.sonarsource.plugins.bml.languages;
 
-import java.util.List;
-import org.sonar.api.config.PropertyDefinition;
-import org.sonar.api.resources.Qualifiers;
+import org.sonar.api.config.Configuration;
+import org.sonar.api.resources.AbstractLanguage;
+import org.sonarsource.plugins.bml.settings.BMLLanguageProperties;
 
-import static java.util.Arrays.asList;
+/**
+ * This class defines the bml language.
+ */
+public final class BMLLanguage extends AbstractLanguage {
 
-public class FooLanguageProperties {
+  public static final String NAME = "BML";
+  public static final String KEY = "bml";
 
-  public static final String FILE_SUFFIXES_KEY = "sonar.foo.file.suffixes";
-  public static final String FILE_SUFFIXES_DEFAULT_VALUE = ".foo";
+  private final Configuration config;
 
-  private FooLanguageProperties() {
-    // only statics
+  public BMLLanguage(Configuration config) {
+    super(KEY, NAME);
+    this.config = config;
   }
 
-  public static List<PropertyDefinition> getProperties() {
-    return asList(PropertyDefinition.builder(FILE_SUFFIXES_KEY)
-      .multiValues(true)
-      .defaultValue(FILE_SUFFIXES_DEFAULT_VALUE)
-      .category("Foo")
-      .name("File Suffixes")
-      .description("List of suffixes for files to analyze.")
-      .onQualifiers(Qualifiers.PROJECT)
-      .build());
+  @Override
+  public String[] getFileSuffixes() {
+    return config.getStringArray(BMLLanguageProperties.FILE_SUFFIXES_KEY);
   }
 
 }

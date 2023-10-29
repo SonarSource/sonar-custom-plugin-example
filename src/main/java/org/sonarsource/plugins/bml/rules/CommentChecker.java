@@ -1,4 +1,4 @@
-package org.sonarsource.plugins.example.rules;
+package org.sonarsource.plugins.bml.rules;
 
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.sensor.SensorContext;
@@ -6,13 +6,13 @@ import org.sonar.api.batch.sensor.issue.NewIssue;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.check.Rule;
 
-@Rule(key = FlagLine1Rule.RULE_KEY, name = "Example rule 1", description = "Example rule 1 description")
-public class FlagLine1Rule implements FlagLineRule {
-  public static final String RULE_KEY = "ExampleRule1";
+@Rule(key = CommentChecker.RULE_KEY, name = "Comment Checker Rule ", description = "File shall contain comments")
+public class CommentChecker implements FlagLineRule {
+  public static final String RULE_KEY = "CommentChecker";
 
   @Override
   public void execute(SensorContext sensorContext, InputFile file, RuleKey ruleKey) {
-    NewIssue newIssue = sensorContext.newIssue();
+	NewIssue newIssue = sensorContext.newIssue();
     newIssue
       .forRule(ruleKey)
       .at(newIssue.newLocation()

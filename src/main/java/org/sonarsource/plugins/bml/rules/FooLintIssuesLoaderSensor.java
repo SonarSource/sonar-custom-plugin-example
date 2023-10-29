@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package org.sonarsource.plugins.example.rules;
+package org.sonarsource.plugins.bml.rules;
 
 import java.io.File;
 import java.util.Arrays;
@@ -35,7 +35,7 @@ import org.sonar.api.config.Configuration;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
-import org.sonarsource.plugins.example.languages.FooLanguage;
+import org.sonarsource.plugins.bml.languages.BMLLanguage;
 
 /**
  * The goal of this Sensor is to load the results of an analysis performed by a fictive external tool named: FooLint
@@ -63,7 +63,7 @@ public class FooLintIssuesLoaderSensor implements Sensor {
   @Override
   public void describe(final SensorDescriptor descriptor) {
     descriptor.name("FooLint Issues Loader Sensor");
-    descriptor.onlyOnLanguage(FooLanguage.KEY);
+    descriptor.onlyOnLanguage(BMLLanguage.KEY);
   }
 
   protected String reportPathKey() {

@@ -1,4 +1,4 @@
-package org.sonarsource.plugins.example.rules;
+package org.sonarsource.plugins.bml.rules;
 
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.sensor.SensorContext;

@@ -20,23 +20,23 @@
 package org.sonarsource.plugins.example;
 
 import org.sonar.api.Plugin;
-import org.sonarsource.plugins.example.hooks.PostJobInScanner;
-import org.sonarsource.plugins.example.hooks.DisplayQualityGateStatus;
-import org.sonarsource.plugins.example.languages.FooLanguage;
-import org.sonarsource.plugins.example.languages.FooQualityProfile;
-import org.sonarsource.plugins.example.measures.ComputeSizeAverage;
-import org.sonarsource.plugins.example.measures.ComputeSizeRating;
-import org.sonarsource.plugins.example.measures.ExampleMetrics;
-import org.sonarsource.plugins.example.measures.SetSizeOnFilesSensor;
-import org.sonarsource.plugins.example.rules.CreateIssuesOnJavaFilesSensor;
-import org.sonarsource.plugins.example.rules.FlagLineSensor;
-import org.sonarsource.plugins.example.rules.FooLintIssuesLoaderSensor;
-import org.sonarsource.plugins.example.rules.FlagRuleDefinition;
-import org.sonarsource.plugins.example.rules.JavaRulesDefinition;
-import org.sonarsource.plugins.example.settings.FooLanguageProperties;
-import org.sonarsource.plugins.example.settings.HelloWorldProperties;
-import org.sonarsource.plugins.example.settings.SayHelloFromScanner;
-import org.sonarsource.plugins.example.web.MyPluginPageDefinition;
+import org.sonarsource.plugins.bml.hooks.DisplayQualityGateStatus;
+import org.sonarsource.plugins.bml.hooks.PostJobInScanner;
+import org.sonarsource.plugins.bml.languages.BMLLanguage;
+import org.sonarsource.plugins.bml.languages.FooQualityProfile;
+import org.sonarsource.plugins.bml.measures.ComputeSizeAverage;
+import org.sonarsource.plugins.bml.measures.ComputeSizeRating;
+import org.sonarsource.plugins.bml.measures.ExampleMetrics;
+import org.sonarsource.plugins.bml.measures.SetSizeOnFilesSensor;
+import org.sonarsource.plugins.bml.rules.CreateIssuesOnJavaFilesSensor;
+import org.sonarsource.plugins.bml.rules.FlagLineSensor;
+import org.sonarsource.plugins.bml.rules.FlagRuleDefinition;
+import org.sonarsource.plugins.bml.rules.FooLintIssuesLoaderSensor;
+import org.sonarsource.plugins.bml.rules.JavaRulesDefinition;
+import org.sonarsource.plugins.bml.settings.BMLLanguageProperties;
+import org.sonarsource.plugins.bml.settings.HelloWorldProperties;
+import org.sonarsource.plugins.bml.settings.SayHelloFromScanner;
+import org.sonarsource.plugins.bml.web.MyPluginPageDefinition;
 
 /**
  * This class is the entry point for all extensions. It is referenced in pom.xml.
@@ -50,8 +50,8 @@ public class ExamplePlugin implements Plugin {
 
     // tutorial on languages
     // https://docs.sonarqube.org/9.4/extend/new-languages/
-    context.addExtensions(FooLanguage.class, FooQualityProfile.class);
-    context.addExtensions(FooLanguageProperties.getProperties());
+    context.addExtensions(BMLLanguage.class, FooQualityProfile.class);
+    context.addExtensions(BMLLanguageProperties.getProperties());
 
     // tutorial on measures
     context

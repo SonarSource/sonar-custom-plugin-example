@@ -17,26 +17,25 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package org.sonarsource.plugins.example.rules;
+package org.sonarsource.plugins.bml.hooks;
 
-import org.sonar.api.server.rule.RulesDefinition;
-import org.sonar.api.server.rule.RulesDefinitionAnnotationLoader;
-import org.sonarsource.plugins.example.languages.FooLanguage;
+import org.sonar.api.batch.postjob.PostJob;
+import org.sonar.api.batch.postjob.PostJobContext;
+import org.sonar.api.batch.postjob.PostJobDescriptor;
+import org.sonar.api.utils.log.Logger;
+import org.sonar.api.utils.log.Loggers;
 
-public final class FlagRuleDefinition implements RulesDefinition {
+public class PostJobInScanner implements PostJob {
 
-  static final String KEY = "flagLine";
-  public static final String REPO_KEY = FooLanguage.KEY + "-" + KEY;
-  private static final String REPO_NAME = FooLanguage.KEY + "- " + KEY + " repo";
+  private static final Logger LOGGER = Loggers.get(PostJobInScanner.class);
 
   @Override
-  public void define(Context context) {
-    NewRepository repository = context.createRepository(REPO_KEY, FooLanguage.KEY).setName(REPO_NAME);
-
-    RulesDefinitionAnnotationLoader rulesDefinitionAnnotationLoader = new RulesDefinitionAnnotationLoader();
-    rulesDefinitionAnnotationLoader.load(repository, FlagLine1Rule.class, FlagLine2Rule.class, FlagLine3Rule.class);
-
-    repository.done();
+  public void describe(PostJobDescriptor descriptor) {
+    descriptor.name("After scan");
   }
 
+  @Override
+  public void execute(PostJobContext context) {
+    LOGGER.info("Something to do after the analysis report has been submitted");
+  }
 }

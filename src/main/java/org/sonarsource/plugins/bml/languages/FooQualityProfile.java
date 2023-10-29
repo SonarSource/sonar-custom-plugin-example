@@ -17,14 +17,13 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package org.sonarsource.plugins.example.languages;
+package org.sonarsource.plugins.bml.languages;
+
+import static org.sonarsource.plugins.bml.rules.FlagRuleDefinition.REPO_KEY;
 
 import org.sonar.api.server.profile.BuiltInQualityProfilesDefinition;
-import org.sonarsource.plugins.example.rules.FlagLine1Rule;
-import org.sonarsource.plugins.example.rules.FlagLine2Rule;
-import org.sonarsource.plugins.example.rules.FlagLine3Rule;
-
-import static org.sonarsource.plugins.example.rules.FlagRuleDefinition.REPO_KEY;
+import org.sonarsource.plugins.bml.rules.CommentChecker;
+import org.sonarsource.plugins.bml.rules.MultipleForLoop;
 
 /**
  * Default, BuiltIn Quality Profile for the projects having files of the language "foo"
@@ -33,17 +32,22 @@ public final class FooQualityProfile implements BuiltInQualityProfilesDefinition
 
   @Override
   public void define(Context context) {
-    NewBuiltInQualityProfile profile = context.createBuiltInQualityProfile("FooLint Rules", FooLanguage.KEY);
+    NewBuiltInQualityProfile profile = context.createBuiltInQualityProfile("FooLint Rules", BMLLanguage.KEY);
     profile.setDefault(true);
 
-    NewBuiltInActiveRule rule1 = profile.activateRule(REPO_KEY, FlagLine1Rule.RULE_KEY);
+    NewBuiltInActiveRule rule1 = profile.activateRule(REPO_KEY, CommentChecker.RULE_KEY);
     rule1.overrideSeverity("BLOCKER");
-
-
-    NewBuiltInActiveRule rule2 = profile.activateRule(REPO_KEY, FlagLine2Rule.RULE_KEY);
+    NewBuiltInActiveRule rule2 = profile.activateRule(REPO_KEY, MultipleForLoop.RULE_KEY);
     rule2.overrideSeverity("MAJOR");
-    NewBuiltInActiveRule rule3 = profile.activateRule(REPO_KEY, FlagLine3Rule.RULE_KEY);
-    rule3.overrideSeverity("CRITICAL");
+     
+
+
+	/*
+	 * NewBuiltInActiveRule rule2 = profile.activateRule(REPO_KEY,
+	 * FlagLine2Rule.RULE_KEY); rule2.overrideSeverity("MAJOR");
+	 * NewBuiltInActiveRule rule3 = profile.activateRule(REPO_KEY,
+	 * FlagLine3Rule.RULE_KEY); rule3.overrideSeverity("CRITICAL");
+	 */
 
     profile.done();
   }

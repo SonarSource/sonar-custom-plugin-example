@@ -17,30 +17,26 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package org.sonarsource.plugins.example.languages;
+package org.sonarsource.plugins.bml.rules;
 
-import org.sonar.api.config.Configuration;
-import org.sonar.api.resources.AbstractLanguage;
-import org.sonarsource.plugins.example.settings.FooLanguageProperties;
+import org.sonar.api.server.rule.RulesDefinition;
+import org.sonar.api.server.rule.RulesDefinitionAnnotationLoader;
+import org.sonarsource.plugins.bml.languages.BMLLanguage;
 
-/**
- * This class defines the fictive Foo language.
- */
-public final class FooLanguage extends AbstractLanguage {
+public final class FlagRuleDefinition implements RulesDefinition {
 
-  public static final String NAME = "Foo";
-  public static final String KEY = "foo";
-
-  private final Configuration config;
-
-  public FooLanguage(Configuration config) {
-    super(KEY, NAME);
-    this.config = config;
-  }
+  static final String KEY = "flagLine";
+  public static final String REPO_KEY = BMLLanguage.KEY + "-" + KEY;
+  private static final String REPO_NAME = BMLLanguage.KEY + "- " + KEY + " repo";
 
   @Override
-  public String[] getFileSuffixes() {
-    return config.getStringArray(FooLanguageProperties.FILE_SUFFIXES_KEY);
+  public void define(Context context) {
+    NewRepository repository = context.createRepository(REPO_KEY, BMLLanguage.KEY).setName(REPO_NAME);
+
+    RulesDefinitionAnnotationLoader rulesDefinitionAnnotationLoader = new RulesDefinitionAnnotationLoader();
+    rulesDefinitionAnnotationLoader.load(repository, CommentChecker.class,MultipleForLoop.class);
+
+    repository.done();
   }
 
 }

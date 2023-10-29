@@ -17,25 +17,32 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package org.sonarsource.plugins.example.hooks;
+package org.sonarsource.plugins.bml.settings;
 
-import org.sonar.api.batch.postjob.PostJob;
-import org.sonar.api.batch.postjob.PostJobContext;
-import org.sonar.api.batch.postjob.PostJobDescriptor;
-import org.sonar.api.utils.log.Logger;
-import org.sonar.api.utils.log.Loggers;
+import java.util.List;
+import org.sonar.api.config.PropertyDefinition;
+import org.sonar.api.resources.Qualifiers;
 
-public class PostJobInScanner implements PostJob {
+import static java.util.Arrays.asList;
 
-  private static final Logger LOGGER = Loggers.get(PostJobInScanner.class);
+public class BMLLanguageProperties {
 
-  @Override
-  public void describe(PostJobDescriptor descriptor) {
-    descriptor.name("After scan");
+  public static final String FILE_SUFFIXES_KEY = "sonar.bml.file.suffixes";
+  public static final String FILE_SUFFIXES_DEFAULT_VALUE = ".bml";
+
+  private BMLLanguageProperties() {
+    // only statics
   }
 
-  @Override
-  public void execute(PostJobContext context) {
-    LOGGER.info("Something to do after the analysis report has been submitted");
+  public static List<PropertyDefinition> getProperties() {
+    return asList(PropertyDefinition.builder(FILE_SUFFIXES_KEY)
+      .multiValues(true)
+      .defaultValue(FILE_SUFFIXES_DEFAULT_VALUE)
+      .category("BML")
+      .name("File Suffixes")
+      .description("List of suffixes for files to analyze.")
+      .onQualifiers(Qualifiers.PROJECT)
+      .build());
   }
+
 }
