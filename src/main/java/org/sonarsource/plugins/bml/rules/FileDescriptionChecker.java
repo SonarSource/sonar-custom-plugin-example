@@ -6,13 +6,12 @@ import org.sonar.api.batch.sensor.issue.NewIssue;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.check.Rule;
 
-@Rule(key = CommentChecker.RULE_KEY, name = "Comment Checker Rule ", description = "File shall contain comments")
-public class CommentChecker implements FlagLineRule {
-  public static final String RULE_KEY = "CommentChecker";
+@Rule(key = FileDescriptionChecker.RULE_KEY, name = "Multiple For Loop ", description = "File shall not contain MultipleForLoop")
+public class FileDescriptionChecker implements FlagLineRule {
+  public static final String RULE_KEY = "MultipleForLoop";
 
   @Override
   public void execute(SensorContext sensorContext, InputFile file, RuleKey ruleKey) {
-	//Add the rule logic here
 	NewIssue newIssue = sensorContext.newIssue();
     newIssue
       .forRule(ruleKey)

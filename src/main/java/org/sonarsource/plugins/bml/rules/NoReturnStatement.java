@@ -6,13 +6,12 @@ import org.sonar.api.batch.sensor.issue.NewIssue;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.check.Rule;
 
-@Rule(key = CommentChecker.RULE_KEY, name = "Comment Checker Rule ", description = "File shall contain comments")
-public class CommentChecker implements FlagLineRule {
-  public static final String RULE_KEY = "CommentChecker";
+@Rule(key = NoReturnStatement.RULE_KEY, name = "No Return Statement ", description = "File shall contain return statement")
+public class NoReturnStatement implements FlagLineRule {
+  public static final String RULE_KEY = "NoReturnStatement";
 
   @Override
   public void execute(SensorContext sensorContext, InputFile file, RuleKey ruleKey) {
-	//Add the rule logic here
 	NewIssue newIssue = sensorContext.newIssue();
     newIssue
       .forRule(ruleKey)

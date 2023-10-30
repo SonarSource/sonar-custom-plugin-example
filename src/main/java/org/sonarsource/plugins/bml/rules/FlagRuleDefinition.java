@@ -34,7 +34,7 @@ public final class FlagRuleDefinition implements RulesDefinition {
     NewRepository repository = context.createRepository(REPO_KEY, BMLLanguage.KEY).setName(REPO_NAME);
 
     RulesDefinitionAnnotationLoader rulesDefinitionAnnotationLoader = new RulesDefinitionAnnotationLoader();
-    rulesDefinitionAnnotationLoader.load(repository, CommentChecker.class,MultipleForLoop.class);
+    rulesDefinitionAnnotationLoader.load(repository, AllignmentChecker.class,CommentChecker.class,MaxForLoop.class,MultipleLineProcessLoop.class,NoReturnStatement.class,StringBuilder.class);
 
     repository.done();
   }

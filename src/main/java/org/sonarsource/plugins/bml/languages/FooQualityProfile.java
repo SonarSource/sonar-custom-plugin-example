@@ -22,11 +22,15 @@ package org.sonarsource.plugins.bml.languages;
 import static org.sonarsource.plugins.bml.rules.FlagRuleDefinition.REPO_KEY;
 
 import org.sonar.api.server.profile.BuiltInQualityProfilesDefinition;
+import org.sonarsource.plugins.bml.rules.AllignmentChecker;
 import org.sonarsource.plugins.bml.rules.CommentChecker;
-import org.sonarsource.plugins.bml.rules.MultipleForLoop;
+import org.sonarsource.plugins.bml.rules.MaxForLoop;
+import org.sonarsource.plugins.bml.rules.MultipleLineProcessLoop;
+import org.sonarsource.plugins.bml.rules.NoReturnStatement;
+import org.sonarsource.plugins.bml.rules.StringBuilder;
 
 /**
- * Default, BuiltIn Quality Profile for the projects having files of the language "foo"
+ * Default, BuiltIn Quality Profile for the projects having files of the language "bml"
  */
 public final class FooQualityProfile implements BuiltInQualityProfilesDefinition {
 
@@ -37,18 +41,16 @@ public final class FooQualityProfile implements BuiltInQualityProfilesDefinition
 
     NewBuiltInActiveRule rule1 = profile.activateRule(REPO_KEY, CommentChecker.RULE_KEY);
     rule1.overrideSeverity("BLOCKER");
-    NewBuiltInActiveRule rule2 = profile.activateRule(REPO_KEY, MultipleForLoop.RULE_KEY);
+    NewBuiltInActiveRule rule2 = profile.activateRule(REPO_KEY, MaxForLoop.RULE_KEY);
     rule2.overrideSeverity("MAJOR");
-     
-
-
-	/*
-	 * NewBuiltInActiveRule rule2 = profile.activateRule(REPO_KEY,
-	 * FlagLine2Rule.RULE_KEY); rule2.overrideSeverity("MAJOR");
-	 * NewBuiltInActiveRule rule3 = profile.activateRule(REPO_KEY,
-	 * FlagLine3Rule.RULE_KEY); rule3.overrideSeverity("CRITICAL");
-	 */
-
+	NewBuiltInActiveRule rule3 = profile.activateRule(REPO_KEY, AllignmentChecker.RULE_KEY);
+	rule3.overrideSeverity("CRITICAL");
+	NewBuiltInActiveRule rule4 = profile.activateRule(REPO_KEY,	MultipleLineProcessLoop.RULE_KEY);
+	rule4.overrideSeverity("MAJOR");
+	NewBuiltInActiveRule rule5 = profile.activateRule(REPO_KEY,	NoReturnStatement.RULE_KEY);
+	rule5.overrideSeverity("CRITICAL");
+	NewBuiltInActiveRule rule6 = profile.activateRule(REPO_KEY,	StringBuilder.RULE_KEY);
+	rule6.overrideSeverity("BLOCKER");
     profile.done();
   }
 

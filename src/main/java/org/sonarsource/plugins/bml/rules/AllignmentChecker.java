@@ -6,9 +6,9 @@ import org.sonar.api.batch.sensor.issue.NewIssue;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.check.Rule;
 
-@Rule(key = MultipleForLoop.RULE_KEY, name = "Multiple For Loop ", description = "File shall not contain MultipleForLoop")
-public class MultipleForLoop implements FlagLineRule {
-  public static final String RULE_KEY = "MultipleForLoop";
+@Rule(key = AllignmentChecker.RULE_KEY, name = "Allignment Checker", description = "File shall be alligned")
+public class AllignmentChecker implements FlagLineRule {
+  public static final String RULE_KEY = "AllignmentChecker";
 
   @Override
   public void execute(SensorContext sensorContext, InputFile file, RuleKey ruleKey) {

@@ -15,7 +15,7 @@ public class FlagLineSensor implements Sensor {
 
   public FlagLineSensor(CheckFactory checkFactory) {
     checks = checkFactory.create(FlagRuleDefinition.REPO_KEY);
-    checks.addAnnotatedChecks(CommentChecker.class,MultipleForLoop.class);
+    checks.addAnnotatedChecks(AllignmentChecker.class,CommentChecker.class,MaxForLoop.class,MultipleLineProcessLoop.class,NoReturnStatement.class,StringBuilder.class);
   }
 
   @Override
