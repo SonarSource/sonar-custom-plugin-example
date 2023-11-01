@@ -6,8 +6,8 @@ import org.sonar.api.batch.sensor.issue.NewIssue;
 import org.sonar.api.rule.RuleKey;
 import org.sonar.check.Rule;
 
-@Rule(key = StringBuilder.RULE_KEY, name = "String Builder ", description = "File shall not contain string concatenation")
-public class StringBuilder implements FlagLineRule {
+@Rule(key = StringConcatenation.RULE_KEY, name = "String Builder ", description = "File shall not contain string concatenation")
+public class StringConcatenation implements FlagLineRule {
   public static final String RULE_KEY = "StringBuilder";
 
   @Override

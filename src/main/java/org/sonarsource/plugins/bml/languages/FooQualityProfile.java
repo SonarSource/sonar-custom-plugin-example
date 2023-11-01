@@ -27,7 +27,7 @@ import org.sonarsource.plugins.bml.rules.CommentChecker;
 import org.sonarsource.plugins.bml.rules.MaxForLoop;
 import org.sonarsource.plugins.bml.rules.MultipleLineProcessLoop;
 import org.sonarsource.plugins.bml.rules.NoReturnStatement;
-import org.sonarsource.plugins.bml.rules.StringBuilder;
+import org.sonarsource.plugins.bml.rules.StringConcatenation;
 
 /**
  * Default, BuiltIn Quality Profile for the projects having files of the language "bml"
@@ -49,7 +49,7 @@ public final class FooQualityProfile implements BuiltInQualityProfilesDefinition
 	rule4.overrideSeverity("MAJOR");
 	NewBuiltInActiveRule rule5 = profile.activateRule(REPO_KEY,	NoReturnStatement.RULE_KEY);
 	rule5.overrideSeverity("CRITICAL");
-	NewBuiltInActiveRule rule6 = profile.activateRule(REPO_KEY,	StringBuilder.RULE_KEY);
+	NewBuiltInActiveRule rule6 = profile.activateRule(REPO_KEY,	StringConcatenation.RULE_KEY);
 	rule6.overrideSeverity("BLOCKER");
     profile.done();
   }
