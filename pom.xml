@@ -106,19 +106,6 @@
         </configuration>
       </plugin>
       <plugin>
-        <!-- UTF-8 bundles are not supported by Java, so they must be converted during build -->
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>native2ascii-maven-plugin</artifactId>
-        <version>2.0.1</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>resources</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <groupId>com.github.eirslett</groupId>
         <artifactId>frontend-maven-plugin</artifactId>
         <version>1.9.1</version>
