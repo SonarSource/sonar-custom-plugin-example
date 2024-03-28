@@ -53,12 +53,13 @@
       <plugin>
         <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
         <artifactId>sonar-packaging-maven-plugin</artifactId>
-        <version>1.21.0.505</version>
+        <version>1.23.0.740</version>
         <extensions>true</extensions>
         <configuration>
           <pluginKey>example</pluginKey>
           <pluginClass>org.sonarsource.plugins.example.ExamplePlugin</pluginClass>
-          <sonarQubeMinVersion>9.5</sonarQubeMinVersion>
+          <!-- Optional, only if you are sure to support older versions of the plugin API than the one you are compiling against -->
+          <pluginApiMinVersion>9.5</pluginApiMinVersion>
         </configuration>
       </plugin>
       <plugin>
