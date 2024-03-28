@@ -4,7 +4,6 @@
 
   <groupId>org.sonarsource.plugins.example</groupId>
   <artifactId>sonar-example-plugin</artifactId>
-  <packaging>sonar-plugin</packaging>
   <version>10.0.0</version>
 
   <name>Example Plugin for SonarQube 10.x</name>
@@ -51,15 +50,51 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
-        <artifactId>sonar-packaging-maven-plugin</artifactId>
-        <version>1.21.0.505</version>
-        <extensions>true</extensions>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
         <configuration>
-          <pluginKey>example</pluginKey>
-          <pluginClass>org.sonarsource.plugins.example.ExamplePlugin</pluginClass>
-          <sonarQubeMinVersion>9.5</sonarQubeMinVersion>
+          <archive>
+            <manifestEntries>
+              <!-- Required entries for a Sonar plugin -->
+              <Plugin-Key>example</Plugin-Key>
+              <Plugin-Class>org.sonarsource.plugins.example.ExamplePlugin</Plugin-Class>
+              <Plugin-Name>${project.name}</Plugin-Name>
+              <Plugin-Version>${project.version}</Plugin-Version>
+              <!-- The following entries are optional -->
+              <Sonar-Version>${sonar.apiVersion}</Sonar-Version>
+              <Plugin-Display-Version>${project.version} (beta)</Plugin-Display-Version>
+              <Plugin-Description>${project.description}</Plugin-Description>
+              <Plugin-License>GNU LGPL 3</Plugin-License>
+              <Plugin-Developers>Name of company or developer(s)</Plugin-Developers>
+              <Plugin-BuildDate>${maven.build.timestamp}</Plugin-BuildDate>
+            </manifestEntries>
+          </archive>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.5.1</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <shadedArtifactAttached>false</shadedArtifactAttached>
+              <createDependencyReducedPom>false</createDependencyReducedPom>
+              <filters>
+                <filter>
+                  <artifact>commons-lang:commons-lang</artifact>
+                  <excludes>
+                    <exclude>META-INF/*.MF</exclude>
+                  </excludes>
+                </filter>
+              </filters>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -68,19 +103,6 @@
         <configuration>
           <release>11</release>
         </configuration>
-      </plugin>
-      <plugin>
-        <!-- UTF-8 bundles are not supported by Java, so they must be converted during build -->
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>native2ascii-maven-plugin</artifactId>
-        <version>2.0.1</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>resources</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
       <plugin>
         <groupId>com.github.eirslett</groupId>
