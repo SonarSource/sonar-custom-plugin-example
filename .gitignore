@@ -1,6 +1,5 @@
 node_modules
 .DS_Store
-yarn.lock
 target/
 node/
 .idea/
@@ -10,3 +9,12 @@ sonar-example-plugin.iml
 .classpath
 .project
 .settings/
+
+# yarn
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

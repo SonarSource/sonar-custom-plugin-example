@@ -12,8 +12,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <sonar.apiVersion>9.8.0.203</sonar.apiVersion>
-    <sonar.testingHarnessVersion>9.5.0.56709</sonar.testingHarnessVersion>
+    <sonar.apiVersion>10.11.0.2468</sonar.apiVersion>
+    <sonar.testingHarnessVersion>10.7.0.96327</sonar.testingHarnessVersion>
     <jdk.min.version>17</jdk.min.version>
     <sonar.sources>src/main/java,src/main/js</sonar.sources>
   </properties>
@@ -27,9 +27,9 @@
     </dependency>
     <dependency>
       <!-- packaged with the plugin -->
-      <groupId>commons-lang</groupId>
-      <artifactId>commons-lang</artifactId>
-      <version>2.6</version>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.17.0</version>
     </dependency>
 
 
@@ -43,7 +43,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -59,34 +59,21 @@
           <pluginKey>example</pluginKey>
           <pluginClass>org.sonarsource.plugins.example.ExamplePlugin</pluginClass>
           <!-- Optional, only if you are sure to support older versions of the plugin API than the one you are compiling against -->
-          <pluginApiMinVersion>9.5</pluginApiMinVersion>
+          <pluginApiMinVersion>9.9</pluginApiMinVersion>
         </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.10.1</version>
+        <version>3.13.0</version>
         <configuration>
           <release>11</release>
         </configuration>
       </plugin>
       <plugin>
-        <!-- UTF-8 bundles are not supported by Java, so they must be converted during build -->
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>native2ascii-maven-plugin</artifactId>
-        <version>2.0.1</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>resources</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <groupId>com.github.eirslett</groupId>
         <artifactId>frontend-maven-plugin</artifactId>
-        <version>1.9.1</version>
+        <version>1.12.1</version>
         <executions>
           <execution>
             <phase>generate-resources</phase>
@@ -95,7 +82,8 @@
               <goal>install-node-and-yarn</goal>
             </goals>
             <configuration>
-              <nodeVersion>v16.14.0</nodeVersion>
+              <nodeVersion>v20.18.0</nodeVersion>
+              <!-- yarn 1.x is needed as a bootstrap, then it will use the version in the .yarnrc.yml -->
               <yarnVersion>v1.22.5</yarnVersion>
             </configuration>
           </execution>
@@ -104,6 +92,9 @@
             <goals>
               <goal>yarn</goal>
             </goals>
+            <configuration>
+              <arguments>install</arguments>
+            </configuration>
           </execution>
           <execution>
             <phase>generate-resources</phase>
