@@ -83,5 +83,6 @@
     "backbone": "^1.4.0",
     "jquery": "^1.11.0",
     "underscore": "^1.9.1"
-  }
+  },
+  "packageManager": "yarn@4.5.0"
 }
