@@ -7,8 +7,8 @@
   <packaging>sonar-plugin</packaging>
   <version>10.0.0</version>
 
-  <name>Example Plugin for SonarQube 10.x</name>
-  <description>Example of Plugin for SonarQube: Foo Language, FooLint, Custom Metrics and MeasureComputers</description>
+  <name>Example Plugin for SonarQube Server 10.x</name>
+  <description>Example of Plugin for SonarQube Server: Foo Language, FooLint, Custom Metrics and MeasureComputers</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

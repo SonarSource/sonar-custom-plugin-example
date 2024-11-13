@@ -1,7 +1,7 @@
-SonarQube Custom Plugin Example [![Build Status](https://travis-ci.org/SonarSource/sonar-custom-plugin-example.svg?branch=7.x)](https://travis-ci.org/SonarSource/sonar-custom-plugin-example)
+SonarQube Server Custom Plugin Example [![Build Status](https://travis-ci.org/SonarSource/sonar-custom-plugin-example.svg?branch=7.x)](https://travis-ci.org/SonarSource/sonar-custom-plugin-example)
 ==========
 
-An example SonarQube plugin compatible with SonarQube 10.x.
+An example SonarQube plugin compatible with SonarQube Server 10.x.
 
 Sonar's [Clean Code solutions](https://www.sonarsource.com/solutions/clean-code/?utm_medium=referral&utm_source=github&utm_campaign=clean-code&utm_content=sonar-custom-plugin-example) help developers deliver high-quality, efficient code standards that benefit the entire team or organization.
 
@@ -18,12 +18,12 @@ To build the plugin JAR file, call:
 mvn clean package
 ```
 
-The JAR will be deployed to `target/sonar-example-plugin-VERSION.jar`. Copy this to your SonarQube's `extensions/plugins/` directory, and re-start SonarQube.
+The JAR will be deployed to `target/sonar-example-plugin-VERSION.jar`. Copy this to your SonarQube Server's `extensions/plugins/` directory, and restart the server.
 
 Front-end
 ---------
 
-This plugin registers 4 extension pages in the SonarQube web app. They demonstrate how you can extend SonarQube's UI with new pages and interfaces.
+This plugin registers 4 extension pages in the SonarQube Server web app. These pages demonstrate how to extend SonarQube Server's UI with new pages and interfaces.
 
 ### Prerequisites
 
@@ -33,8 +33,8 @@ This plugin registers 4 extension pages in the SonarQube web app. They demonstra
 
 * `npm install` to install your dependencies.
 * `npm start` to start a proxy server on port 3000 to debug your JS code.  
-  *Note: This plugin must first be deployed and installed on your SonarQube instance, otherwise the extension paths will not be registered. See above under Back-end > Building*  
-  This will proxy to a running SonarQube instance, but allow you to use your own local JavaScript instead of what was bundled with your plugin. Once started, you can access `http://localhost:3000` in your browser, and use SonarQube as you normally would.  
+  *Note: This plugin must first be deployed and installed on your SonarQube Server instance, otherwise the extension paths will not be registered. See above under Back-end > Building*  
+  This will proxy to a running SonarQube Server instance, but allow you to use your own local JavaScript instead of what was bundled with your plugin. Once started, you can access `http://localhost:3000` in your browser, and use SonarQube Server as you normally would.  
   You can use a different port by using the `PORT` environment variable. Example:  
   ```
   PORT=6060 npm start
@@ -45,7 +45,7 @@ This plugin registers 4 extension pages in the SonarQube web app. They demonstra
   ```
 * `npm test` to start watching your files for changes, and run tests accordingly.
 * `npm run build` to build your front-end code.  
-  Usually, you will not need to call this; instead, this should be part of your package-building process.  
+  You should not usually need to call this; instead, it should be part of your package-building process.  
   See Back-end > Building above.
 
 ### Building
@@ -64,19 +64,19 @@ This project uses [Jest](https://jestjs.io/) for testing. Running `npm test` wil
 
 ### How to use these files
 
-It is recommended you check out the sources in `src/main/js/` directly. The code is well-commented and provides real-world examples of how to interact with SonarQube.
+It is recommended you check out the sources in `src/main/js/` directly. The code is well-commented and provides real-world examples of how to interact with SonarQube Server.
 
 The pages are registered in `src/main/java/org/sonarsource/plugins/example/web/MyPluginPageDefinition.java`, and their respective front-end source code is located in `src/main/js/`. These examples use different stacks to demonstrate different possibilities:
 
-* React JS examples (recommended, SonarQube uses React 16):
+* React JS examples (recommended, SonarQube Server uses React 16):
   * `src/main/js/portfolio_page/`
   * `src/main/js/admin_page/`
 * Backbone JS example: `src/main/js/project_page/`
 * Vanilla JS example: `src/main/js/global_page/`
 
-#### Helper APIs exposed by SonarQube
+#### Helper APIs exposed by SonarQube Server
 
-There are several helper APIs exposed by SonarQube, like functions to make authenticated API requests.
+There are several helper APIs exposed by SonarQube Server, like functions to make authenticated API requests.
 
 You can find the full list of exposed helpers [here](https://github.com/SonarSource/sonarqube/blob/master/server/sonar-web/src/main/js/app/components/extensions/exposeLibraries.ts).
 
