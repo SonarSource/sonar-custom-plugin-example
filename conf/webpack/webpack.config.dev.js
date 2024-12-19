@@ -19,7 +19,7 @@
 const webpack = require('webpack');
 const config = require('./webpack.config');
 
-config.devtool = 'eval';
+config.devtool = 'inline-source-map';
 
 config.output.publicPath = '/static/example/';
 
