@@ -8,14 +8,16 @@
   <version>10.0.0</version>
 
   <name>Example Plugin for SonarQube Server 10.x</name>
-  <description>Example of Plugin for SonarQube Server: Foo Language, FooLint, Custom Metrics and MeasureComputers</description>
+  <description>Example of Plugin for SonarQube Server</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <sonar.apiVersion>10.11.0.2468</sonar.apiVersion>
     <sonar.testingHarnessVersion>10.7.0.96327</sonar.testingHarnessVersion>
+    <sonarjava.version>8.10.0.38194</sonarjava.version>
     <jdk.min.version>17</jdk.min.version>
     <sonar.sources>src/main/java,src/main/js</sonar.sources>
+    <junit.jupiter.version>5.9.2</junit.jupiter.version>
   </properties>
 
   <dependencies>
@@ -25,13 +27,27 @@
       <version>${sonar.apiVersion}</version>
       <scope>provided</scope>
     </dependency>
+
+    <!-- Java analyzer -->
+    <dependency>
+      <groupId>org.sonarsource.java</groupId>
+      <artifactId>sonar-java-plugin</artifactId>
+      <version>${sonarjava.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.sonarsource.analyzer-commons</groupId>
+      <artifactId>sonar-analyzer-commons</artifactId>
+      <version>1.24.0.965</version>
+    </dependency>
+
     <dependency>
       <!-- packaged with the plugin -->
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
       <version>3.17.0</version>
     </dependency>
-
 
     <!-- unit tests -->
     <dependency>
@@ -40,12 +56,28 @@
       <version>${sonar.testingHarnessVersion}</version>
       <scope>test</scope>
     </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>${junit.jupiter.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.sonarsource.java</groupId>
+      <artifactId>java-checks-testkit</artifactId>
+      <version>${sonarjava.version}</version>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -60,6 +92,7 @@
           <pluginClass>org.sonarsource.plugins.example.ExamplePlugin</pluginClass>
           <!-- Optional, only if you are sure to support older versions of the plugin API than the one you are compiling against -->
           <pluginApiMinVersion>9.9</pluginApiMinVersion>
+          <requirePlugins>java:${sonarjava.version}</requirePlugins>
         </configuration>
       </plugin>
       <plugin>
@@ -108,7 +141,11 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0</version>
+      </plugin>
     </plugins>
   </build>
-
 </project>
