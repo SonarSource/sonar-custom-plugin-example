@@ -6,6 +6,8 @@
   </picture>
 </p>
 
+[![Build Status](https://github.com/SonarSource/sonar-custom-plugin-example/actions/workflows/build.yml/badge.svg?branch=10.x)](https://github.com/SonarSource/sonar-custom-plugin-example/actions/workflows/build.yml)
+
 <!-- sonar-marketing:start -->
 <!-- Marketing maintains this section. For wording changes, consult the relevant Product Marketing Manager (PMM). Repository CODEOWNERS review accuracy and merge changes. -->
 
