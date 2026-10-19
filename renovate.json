@@ -2,5 +2,18 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "local>SonarSource/renovate-config"
+  ],
+  "packageRules": [
+    {
+      "description": "Keep the plugin API and testing harness on 10.x for this SonarQube Server 10.x example.",
+      "matchManagers": [
+        "maven"
+      ],
+      "matchPackageNames": [
+        "org.sonarsource.api.plugin:sonar-plugin-api",
+        "org.sonarsource.sonarqube:sonar-testing-harness"
+      ],
+      "allowedVersions": "/^10\\./"
+    }
   ]
 }
