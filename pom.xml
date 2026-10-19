@@ -12,7 +12,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <sonar.apiVersion>10.11.0.2468</sonar.apiVersion>
+    <sonar.apiVersion>10.14.0.2599</sonar.apiVersion>
     <sonar.testingHarnessVersion>10.7.0.96327</sonar.testingHarnessVersion>
     <jdk.min.version>17</jdk.min.version>
     <sonar.sources>src/main/java,src/main/js</sonar.sources>
@@ -29,7 +29,7 @@
       <!-- packaged with the plugin -->
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
-      <version>3.17.0</version>
+      <version>3.21.0</version>
     </dependency>
 
 
@@ -53,7 +53,7 @@
       <plugin>
         <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
         <artifactId>sonar-packaging-maven-plugin</artifactId>
-        <version>1.23.0.740</version>
+        <version>1.25.1.3002</version>
         <extensions>true</extensions>
         <configuration>
           <pluginKey>example</pluginKey>
@@ -65,7 +65,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.13.0</version>
+        <version>3.16.0</version>
         <configuration>
           <release>11</release>
         </configuration>
@@ -73,7 +73,7 @@
       <plugin>
         <groupId>com.github.eirslett</groupId>
         <artifactId>frontend-maven-plugin</artifactId>
-        <version>1.12.1</version>
+        <version>1.15.4</version>
         <executions>
           <execution>
             <phase>generate-resources</phase>
