@@ -5375,10 +5375,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jquery@npm:^1.11.0":
-  version: 1.12.4
-  resolution: "jquery@npm:1.12.4"
-  checksum: 10c0/0a5f36c3d38aed8ad410b3157311136d807e0ddaf8c33e2bf717639918b97a6ff0091657fe8bf06c910ad8f756eaad0d4f3e438a08920f466e22d0eb55ae3722
+"jquery@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "jquery@npm:4.0.0"
+  checksum: 10c0/06d8d0f51121af5a691f8b59c74823157bb5b60eea915b30eaa920d6c0ffd91e60ba81e9b97bd8203f331f9dd8d0ec9a4b010935ea314bdd2f15453c29bc780b
   languageName: node
   linkType: hard
 
@@ -6793,7 +6793,7 @@ __metadata:
     dotenv: "npm:18.0.8"
     jest: "npm:30.5.2"
     jest-environment-jsdom: "npm:30.5.2"
-    jquery: "npm:^1.11.0"
+    jquery: "npm:^4.0.0"
     postcss: "npm:8.5.30"
     postcss-loader: "npm:8.2.1"
     react: "npm:15.6.2"
