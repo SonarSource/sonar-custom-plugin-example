@@ -8,20 +8,15 @@
     "@babel/preset-flow": "7.29.7",
     "@babel/preset-react": "7.29.7",
     "autoprefixer": "10.6.1",
-    "babel-core": "6.14.0",
-    "babel-jest": "18.0.0",
+    "babel-jest": "30.5.2",
     "babel-loader": "10.1.1",
-    "babel-preset-react-app": "0.2.1",
     "css-loader": "7.1.5",
     "dotenv": "18.0.8",
-    "enzyme": "2.6.0",
-    "enzyme-to-json": "1.4.5",
-    "jest": "18.0.0",
+    "jest": "30.5.2",
+    "jest-environment-jsdom": "30.5.2",
     "postcss": "8.5.30",
     "postcss-loader": "8.2.1",
     "react": "15.6.2",
-    "react-addons-shallow-compare": "15.6.2",
-    "react-addons-test-utils": "15.6.2",
     "react-dom": "15.6.2",
     "style-loader": "4.0.0",
     "webpack": "5.112.0",
@@ -35,7 +30,21 @@
   },
   "babel": {
     "presets": [
-      "react-app"
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ],
+      [
+        "@babel/preset-react",
+        {
+          "runtime": "classic"
+        }
+      ],
+      "@babel/preset-flow"
     ]
   },
   "jest": {
@@ -56,13 +65,14 @@
     "setupFiles": [
       "<rootDir>/conf/jest/SetupTestEnvironment.js"
     ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
     "testPathIgnorePatterns": [
       "<rootDir>/node_modules",
       "<rootDir>/scripts",
       "<rootDir>/conf"
+    ],
+    "testEnvironment": "jsdom",
+    "testMatch": [
+      "<rootDir>/tests/**/*.test.js"
     ]
   },
   "dependencies": {

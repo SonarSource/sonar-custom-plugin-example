@@ -39,3 +39,6 @@ jobs:
 
       - name: Verify development bundles and proxy
         run: ./node/node --test tests/dev-server.test.cjs
+
+      - name: Test packaged extension pages
+        run: ./node/node scripts/test.js --runInBand

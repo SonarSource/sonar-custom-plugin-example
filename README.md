@@ -77,7 +77,7 @@ The building process should be included in your full packaging process. In this 
 
 ### Testing
 
-This project uses [Jest](https://jestjs.io/) for testing. Running `npm test` will run Jest in `--watch` mode. You can find the configuration for Jest in `package.json`.
+This project uses [Jest](https://jestjs.io/) for testing. Run `npm run build` first: the tests execute the production bundles in a DOM with mocked SonarQube APIs. Use `CI=true npm test -- --runInBand` for a single run. Running `npm test` will run Jest in `--watch` mode. You can find the configuration for Jest in `package.json`.
 
 ### How to use these files
 
