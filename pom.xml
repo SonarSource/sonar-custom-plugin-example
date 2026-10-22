@@ -82,7 +82,7 @@
               <goal>install-node-and-yarn</goal>
             </goals>
             <configuration>
-              <nodeVersion>v20.18.0</nodeVersion>
+              <nodeVersion>v22.23.4</nodeVersion>
               <!-- yarn 1.x is needed as a bootstrap, then it will use the version in the .yarnrc.yml -->
               <yarnVersion>v1.22.5</yarnVersion>
             </configuration>

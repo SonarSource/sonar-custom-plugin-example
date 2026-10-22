@@ -18,17 +18,11 @@
  */
 const webpack = require('webpack');
 const config = require('./webpack.config');
+const getClientEnvironment = require('../env');
 
+config.mode = 'development';
 config.devtool = 'inline-source-map';
-
 config.output.publicPath = '/static/example/';
-
-config.output.pathinfo = true;
-
-Object.keys(config.entry).forEach(key => {
-  config.entry[key].unshift(require.resolve('react-dev-utils/webpackHotDevClient'));
-});
-
-config.plugins = [new webpack.HotModuleReplacementPlugin()];
+config.plugins = [new webpack.DefinePlugin(getClientEnvironment())];
 
 module.exports = config;

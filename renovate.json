@@ -14,6 +14,54 @@
         "org.sonarsource.sonarqube:sonar-testing-harness"
       ],
       "allowedVersions": "/^10\\./"
+    },
+    {
+      "description": "Upgrade the frontend compiler, loaders, and development server together.",
+      "matchManagers": [
+        "npm"
+      ],
+      "matchPackageNames": [
+        "/^@babel\\//",
+        "autoprefixer",
+        "babel-loader",
+        "css-loader",
+        "dotenv",
+        "postcss",
+        "postcss-loader",
+        "style-loader",
+        "webpack",
+        "webpack-dev-server"
+      ],
+      "groupName": "frontend build tooling",
+      "groupSlug": "frontend-build-tooling"
+    },
+    {
+      "description": "Keep test runner upgrades separate from the frontend compiler.",
+      "matchManagers": [
+        "npm"
+      ],
+      "matchPackageNames": [
+        "babel-jest",
+        "jest",
+        "jest-environment-jsdom",
+        "enzyme",
+        "enzyme-to-json"
+      ],
+      "groupName": "frontend test tooling",
+      "groupSlug": "frontend-test-tooling"
+    },
+    {
+      "description": "Review Backbone and jQuery runtime changes separately from build tooling.",
+      "matchManagers": [
+        "npm"
+      ],
+      "matchPackageNames": [
+        "backbone",
+        "jquery",
+        "underscore"
+      ],
+      "groupName": "frontend runtime libraries",
+      "groupSlug": "frontend-runtime-libraries"
     }
   ]
 }

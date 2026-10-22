@@ -19,7 +19,6 @@
 /* eslint-disable no-console */
 process.env.NODE_ENV = 'production';
 
-const chalk = require('chalk');
 const webpack = require('webpack');
 const config = require('../conf/webpack/webpack.config.prod.js');
 
@@ -34,19 +33,19 @@ function formatSize(bytes) {
 }
 
 function build() {
-  console.log(chalk.cyan.bold('Creating optimized production build...'));
+  console.log('Creating optimized production build...');
   console.log();
 
   webpack(config, (err, stats) => {
     if (err) {
-      console.log(chalk.red.bold('Failed to create a production build!'));
-      console.log(chalk.red(err.message || err));
+      console.log('Failed to create a production build!');
+      console.log(err.message || err);
       process.exit(1);
     }
 
     if (stats.compilation.errors && stats.compilation.errors.length) {
-      console.log(chalk.red.bold('Failed to create a production build!'));
-      stats.compilation.errors.forEach(err => console.log(chalk.red(err.message || err)));
+      console.log('Failed to create a production build!');
+      stats.compilation.errors.forEach(err => console.log(err.message || err));
       process.exit(1);
     }
 
@@ -59,7 +58,7 @@ function build() {
       let sizeLabel = formatSize(asset.size);
       const leftPadding = ' '.repeat(Math.max(0, 8 - sizeLabel.length));
       sizeLabel = leftPadding + sizeLabel;
-      console.log('', chalk.yellow(sizeLabel), asset.name);
+      console.log('', sizeLabel, asset.name);
     });
     console.log();
 
@@ -67,7 +66,7 @@ function build() {
     console.log('Duration: ' + seconds.toFixed(2) + 's');
     console.log();
 
-    console.log(chalk.green.bold('Compiled successfully!'));
+    console.log('Compiled successfully!');
   });
 }
 

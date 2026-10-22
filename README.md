@@ -43,7 +43,7 @@ This plugin registers 4 extension pages in the SonarQube Server web app. These p
 
 ### Prerequisites
 
-* [NodeJS](https://nodejs.org/en/)
+* [NodeJS](https://nodejs.org/en/) 22.15 or newer (Maven installs Node 22 locally).
 
 ### Scripts
 
@@ -59,6 +59,7 @@ This plugin registers 4 extension pages in the SonarQube Server web app. These p
   ```
   PROXY_URL=https://sonarqube.example.com npm start
   ```
+* `npm run verify:dev` to smoke-test the development bundles and proxy against a local mock server.
 * `npm test` to start watching your files for changes, and run tests accordingly.
 * `npm run build` to build your front-end code.  
   You should not usually need to call this; instead, it should be part of your package-building process.  

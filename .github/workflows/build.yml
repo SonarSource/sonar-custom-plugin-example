@@ -36,3 +36,6 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean package
+
+      - name: Verify development bundles and proxy
+        run: ./node/node --test tests/dev-server.test.cjs

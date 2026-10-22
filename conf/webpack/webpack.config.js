@@ -20,6 +20,7 @@ const path = require("path");
 const autoprefixer = require("autoprefixer");
 
 module.exports = {
+  target: ["web", "es5"],
   // Define the entry points here. They MUST have the same name as the page_id
   // defined in src/main/java/org/sonarsource/plugins/example/web/MyPluginPageDefinition.java
   entry: {
@@ -40,7 +41,7 @@ module.exports = {
     filename: "[name].js"
   },
   resolve: {
-    root: path.join(__dirname, "src/main/js")
+    modules: [path.resolve(__dirname, "../../src/main/js"), "node_modules"]
   },
   externals: {
     // React 16.8 ships with SonarQube, and should be re-used to avoid 
@@ -54,30 +55,28 @@ module.exports = {
   },
   module: {
     // Our example uses Babel to transpile our code.
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        loader: "babel",
+        loader: "babel-loader",
+        options: {
+          babelrc: false,
+          presets: [
+            ["@babel/preset-env", { targets: { ie: "11" } }],
+            ["@babel/preset-react", { runtime: "classic" }],
+            "@babel/preset-flow"
+          ]
+        },
         exclude: /(node_modules)/
       },
       {
         test: /\.css/,
-        loader: "style-loader!css-loader!postcss-loader"
-      },
-      { test: /\.json$/, loader: "json" }
-    ]
-  },
-  postcss() {
-    return [
-      autoprefixer({
-        browsers: [
-          "last 3 Chrome versions",
-          "last 3 Firefox versions",
-          "last 3 Safari versions",
-          "last 3 Edge versions",
-          "IE 11"
+        use: [
+          "style-loader",
+          "css-loader",
+          { loader: "postcss-loader", options: { postcssOptions: { plugins: [autoprefixer()] } } }
         ]
-      })
-    ];
+      }
+    ]
   }
 };
