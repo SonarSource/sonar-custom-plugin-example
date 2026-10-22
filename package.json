@@ -17,7 +17,7 @@
     "enzyme": "2.6.0",
     "enzyme-to-json": "1.4.5",
     "jest": "18.0.0",
-    "postcss": "8.5.31",
+    "postcss": "8.5.30",
     "postcss-loader": "8.2.1",
     "react": "15.6.2",
     "react-addons-shallow-compare": "15.6.2",
