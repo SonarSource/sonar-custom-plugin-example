@@ -104,3 +104,10 @@ The included pages contain several examples:
 
 * **Localization (`window.t()` and `window.tp()`)**  
   Localizable UI strings are defined in `src/main/resources/org/sonar/l10n/example/`. They are loaded at startup time and can used by the global `t()` and `tp()` functions. See `src/main/js/admin_page/components/InstanceStatisticsApp.js` and `src/main/js/portfolio_page/components/VersionsMeasuresHistoryApp.js` for some examples. 
+
+### Updating dependency lockfiles
+
+Regenerate `package-lock.json` with `npm install --package-lock-only`, then run
+`node .yarn/releases/yarn-4.5.0.cjs install` last. npm can rewrite `yarn.lock`
+in the old Yarn format; CI requires the Yarn 4 lockfile. Verify it with
+`node .yarn/releases/yarn-4.5.0.cjs install --immutable` before committing.
